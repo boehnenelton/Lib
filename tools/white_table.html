@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEJSON 104 — test.bejson.json</title>
+<style>
+:root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --border: #d0d0d0;
+    --text: #000000;
+    --text-muted: #555555;
+    --accent: #1a73e8;
+    --accent-hover: #1557b0;
+    --row-hover: #f0f4ff;
+    --header-bg: #ffffff;
+    --header-text: #000000;
+    --null-color: #999999;
+    --true-color: #0d8a3e;
+    --false-color: #d32f2f;
+    --entity-tab-bg: #f0f0f0;
+    --entity-tab-active: #1a73e8;
+    --entity-tab-text: #333333;
+    --entity-tab-active-text: #ffffff;
+    --log-timestamp: #555555;
+    --log-entity: #6a1b9a;
+    --log-field: #1565c0;
+    --log-value: #000000;
+    --zebra-bg: #f8f9fa;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px;
+    line-height: 1.5;
+}
+.header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 24px;
+    margin-bottom: 16px;
+}
+.header h1 { font-size: 1.4em; margin-bottom: 4px; color: #000000; }
+.header .meta { color: var(--text-muted); font-size: 0.9em; }
+.stats { display: flex; gap: 24px; margin-top: 8px; }
+.stats span { color: var(--accent); font-weight: 600; }
+.entity-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0;
+}
+.entity-tab {
+    padding: 8px 16px;
+    background: var(--entity-tab-bg);
+    border: 1px solid var(--border);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: var(--entity-tab-text);
+    user-select: none;
+}
+.entity-tab.active {
+    background: var(--entity-tab-active);
+    color: var(--entity-tab-active-text);
+    border-color: var(--entity-tab-active);
+}
+.entity-tab:hover:not(.active) {
+    background: #e0e0e0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.88em;
+}
+thead th {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border);
+    position: sticky;
+    top: 0;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+thead th:hover { background: #e8e8e8; }
+thead th::after { content: ' ⇅'; opacity: 0.4; }
+tbody td {
+    padding: 8px 12px;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+tbody tr:hover { background: var(--row-hover); }
+tbody tr:nth-child(even) { background: var(--zebra-bg); }
+tbody tr:nth-child(even):hover { background: var(--row-hover); }
+.null-val { color: var(--null-color); font-style: italic; }
+.bool-true { color: var(--true-color); font-weight: 600; }
+.bool-false { color: var(--false-color); font-weight: 600; }
+.json-val {
+    background: #f0f2f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.85em;
+    max-height: 80px;
+    overflow: auto;
+    white-space: pre;
+}
+.idx-col { color: var(--text-muted); text-align: center; width: 40px; }
+.entity-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    font-weight: 600;
+    background: var(--entity-tab-active);
+    color: white;
+}
+.entity-panel { display: none; }
+.entity-panel.active { display: block; }
+.search-bar {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    width: 100%;
+    font-size: 0.9em;
+}
+.search-bar::placeholder { color: var(--text-muted); }
+.record-count { color: var(--text-muted); font-size: 0.85em; margin-bottom: 8px; }
+
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: monospace; padding: 20px; background: #fff; color: #000; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; font-size: 0.85em; }
+th { background: #f0f0f0; }
+tr:nth-child(even) { background: #fafafa; }
+.null-val { color: #999; font-style: italic; }
+h1 { margin-bottom: 8px; }
+.meta { color: #666; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>BEJSON 104 Database</h1>
+  <div class="meta">Generated 2026-04-12 14:09:38 · 9 fields · 1 records</div>
+  <div class="stats">
+    <div>Types: <span>Task</span></div>
+  </div>
+</div>
+<table><thead><tr><th class="idx-col">#</th>
+<th data-col="0">task_id</th>
+<th data-col="1">title</th>
+<th data-col="2">description</th>
+<th data-col="3">status</th>
+<th data-col="4">priority</th>
+<th data-col="5">tags</th>
+<th data-col="6">due_date</th>
+<th data-col="7">completed</th>
+<th data-col="8">completed_at</th>
+</tr></thead><tbody>
+<tr><td class="idx-col">0</td>
+<td>T1</td>
+<td>Test Task</td>
+<td>A test</td>
+<td>active</td>
+<td>high</td>
+<td><span class="json-val">[
+  &quot;test&quot;
+]</span></td>
+<td>2026-04-12</td>
+<td><span class="bool-false">false</span></td>
+<td>None</td>
+</tr>
+</tbody></table>
+
+</body>
+</html>

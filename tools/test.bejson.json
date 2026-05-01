@@ -1,0 +1,61 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "Task"
+  ],
+  "Fields": [
+    {
+      "name": "task_id",
+      "type": "string"
+    },
+    {
+      "name": "title",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "name": "priority",
+      "type": "string"
+    },
+    {
+      "name": "tags",
+      "type": "array"
+    },
+    {
+      "name": "due_date",
+      "type": "string"
+    },
+    {
+      "name": "completed",
+      "type": "boolean"
+    },
+    {
+      "name": "completed_at",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "T1",
+      "Test Task",
+      "A test",
+      "active",
+      "high",
+      [
+        "test"
+      ],
+      "2026-04-12",
+      false,
+      "None"
+    ]
+  ]
+}

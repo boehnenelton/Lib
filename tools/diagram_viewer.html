@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEJSON Diagram Viewer v1.21</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --glass: rgba(30, 41, 59, 0.7);
+            --border: rgba(255, 255, 255, 0.1);
+            --accent: #38bdf8;
+            --text: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR */
+        #sidebar {
+            width: 350px;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        textarea {
+            flex-grow: 1;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            color: var(--accent);
+            padding: 10px;
+            font-family: monospace;
+            border-radius: 8px;
+            resize: none;
+        }
+
+        button {
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover { transform: scale(1.02); }
+
+        /* CANVAS */
+        #viewer {
+            flex-grow: 1;
+            position: relative;
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            overflow: auto;
+        }
+
+        svg {
+            width: 2000px;
+            height: 2000px;
+        }
+
+        .shape-rect {
+            fill: var(--glass);
+            stroke: var(--accent);
+            stroke-width: 2;
+            rx: 8;
+        }
+
+        .shape-label {
+            fill: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        .connector-line {
+            fill: none;
+            stroke: rgba(255,255,255,0.4);
+            stroke-width: 2;
+            marker-end: url(#arrowhead);
+        }
+
+        .header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="sidebar">
+        <div class="header">BEJSON Diagrammer</div>
+        <p style="font-size: 0.8rem; opacity: 0.7;">Paste your BEJSON 104db diagram code below or use Browse to import a file.</p>
+        <textarea id="jsonInput" placeholder='Paste BEJSON 104db here...'></textarea>
+        
+        <div style="display: flex; gap: 10px;">
+            <button onclick="renderDiagram()" style="flex: 2;">Render</button>
+            <button onclick="document.getElementById('fileBrowse').click()" style="flex: 1; background: rgba(255,255,255,0.1); color: var(--accent); border: 1px solid var(--accent);">Browse</button>
+        </div>
+        
+        <input type="file" id="fileBrowse" style="display: none;" onchange="handleFile(this)">
+        <button onclick="clearCanvas()" style="background: #f87171; color: #fff;">Clear Canvas</button>
+        
+        <div id="status" style="font-size: 0.8rem;"></div>
+    </div>
+
+    <div id="viewer">
+        <svg id="canvas">
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="rgba(255,255,255,0.4)" />
+                </marker>
+            </defs>
+            <g id="connectors"></g>
+            <g id="shapes"></g>
+        </svg>
+    </div>
+
+    <script>
+        function handleFile(input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('jsonInput').value = e.target.result;
+                renderDiagram();
+            };
+            reader.readAsText(file);
+        }
+
+        function clearCanvas() {
+            document.getElementById('jsonInput').value = '';
+            document.getElementById('shapes').innerHTML = '';
+            document.getElementById('connectors').innerHTML = '';
+            document.getElementById('status').textContent = '';
+        }
+
+        function renderDiagram() {
+            const input = document.getElementById('jsonInput').value;
+            const status = document.getElementById('status');
+            const shapesGroup = document.getElementById('shapes');
+            const connsGroup = document.getElementById('connectors');
+
+            shapesGroup.innerHTML = '';
+            connsGroup.innerHTML = '';
+
+            try {
+                const doc = JSON.parse(input);
+                if (doc.Format_Version !== '104db') throw new Error("Format must be 104db");
+
+                const fields = doc.Fields;
+                const getIdx = (name, parent) => fields.findIndex(f => f.name === name && f.Record_Type_Parent === parent);
+
+                const shapeMap = {};
+                const sWidth = 150;
+                const sHeight = 60;
+
+                // Process Shapes
+                doc.Values.filter(v => v[0] === 'Shape').forEach(row => {
+                    const id = row[getIdx('id', 'Shape')];
+                    const label = row[getIdx('label', 'Shape')];
+                    const x = row[getIdx('x', 'Shape')] || 0;
+                    const y = row[getIdx('y', 'Shape')] || 0;
+
+                    shapeMap[id] = { id, x, y, label };
+
+                    const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                    
+                    const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    rect.setAttribute("x", x);
+                    rect.setAttribute("y", y);
+                    rect.setAttribute("width", sWidth);
+                    rect.setAttribute("height", sHeight);
+                    rect.setAttribute("class", "shape-rect");
+                    
+                    const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    text.setAttribute("x", x + sWidth/2);
+                    text.setAttribute("y", y + sHeight/2 + 5);
+                    text.setAttribute("text-anchor", "middle");
+                    text.setAttribute("class", "shape-label");
+                    text.textContent = label;
+
+                    g.appendChild(rect);
+                    g.appendChild(text);
+                    shapesGroup.appendChild(g);
+                });
+
+                // Process Connectors
+                doc.Values.filter(v => v[0] === 'Connector').forEach(row => {
+                    const fromId = row[getIdx('from', 'Connector')];
+                    const toId = row[getIdx('to', 'Connector')];
+                    const fIdx = row[getIdx('fromIdx', 'Connector')];
+                    const tIdx = row[getIdx('toIdx', 'Connector')];
+
+                    const s1 = shapeMap[fromId];
+                    const s2 = shapeMap[toId];
+
+                    if (s1 && s2) {
+                        const getAnchor = (s, idx) => {
+                            if (idx === 0) return { x: s.x + sWidth/2, y: s.y }; // Top
+                            if (idx === 1) return { x: s.x + sWidth, y: s.y + sHeight/2 }; // Right
+                            if (idx === 2) return { x: s.x + sWidth/2, y: s.y + sHeight }; // Bottom
+                            if (idx === 3) return { x: s.x, y: s.y + sHeight/2 }; // Left
+                            return { x: s.x, y: s.y };
+                        };
+
+                        const p1 = getAnchor(s1, fIdx);
+                        const p2 = getAnchor(s2, tIdx);
+
+                        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                        // Simple orthogonal-ish path or straight line
+                        const d = `M ${p1.x} ${p1.y} L ${p2.x} ${p2.y}`;
+                        path.setAttribute("d", d);
+                        path.setAttribute("class", "connector-line");
+                        connsGroup.appendChild(path);
+                    }
+                });
+
+                status.style.color = "#4ade80";
+                status.textContent = "[+] Rendered Successfully";
+
+            } catch (e) {
+                status.style.color = "#f87171";
+                status.textContent = "[-] Error: " + e.message;
+            }
+        }
+    </script>
+</body>
+</html>
