@@ -1,9 +1,22 @@
 """
 Library:     lib_bejson_validator_diagram.py
-Version:     1.5 (OFFICIAL) - High-Fidelity & Custom Theme Update
+Version:     1.5.1 (OFFICIAL) - Stable Visualization Suite
 Description: BEJSON Diagram validator and HTML exporter.
              Provides relational validation for 104db diagram structures 
              and generates high-fidelity interactive SVG viewers with custom CSS support.
+
+USAGE INSTRUCTIONS:
+1. Data Model: Ensure your input BEJSON follows the 104db standard with 'Shape' and 'Connector' records.
+2. Rendering: Use `bejson_diagram_export_html(json_string, output_path, title, ...)` to generate diagrams.
+3. Custom Themes: Pass `internal_css` to override styles. 
+   - For High Contrast: Set --bg to #ffffff and override text/rect fills.
+   - For Cyberpunk: Use filters and neon colors (e.g., #ff00ff for Pink).
+4. Anchors: The viewer supports v42.0 8-point anchors (0:Top-Left to 7:Left-Mid).
+
+ENGINEERING NOTES:
+- This library uses the stable Cyberpunk High-Fidelity template.
+- SVG components (nodes, paths) are generated dynamically via DOM API for maximum compatibility.
+- Ensure 'lib_bejson_validator' is available in the Python path for structural integrity checks.
 """
 import json
 import os
