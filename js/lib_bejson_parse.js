@@ -3,13 +3,13 @@
  * Jurisdiction: ["JAVASCRIPT", "CORE_COMMAND"]
  * Status:      OFFICIAL — Core-Command/Lib (v1.1)
  * Author:      Elton Boehnen
- * Version:     1.1 (OFFICIAL)
- * Date:        2026-04-23
+ * Version:     1.3 OFFICIAL
+ * Date:        2026-05-01
  * Description: BEJSON structured parser — extracts files from BEJSON 104 / 104a / 104db schemas.
 Sources lib_bejson_core.js and lib_bejson_validator.js.
 Author:      Elton Boehnen
-Version:     2.0.0 (OFFICIAL)
-Date:        2026-04-16
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Requires:    adm-zip (Node.js) → npm install adm-zip
 * Changelog v2.0.0:
 [NEW] Decoupled ecosystem imports — sources OFFICIAL lib/js/ runtimes.

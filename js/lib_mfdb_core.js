@@ -3,8 +3,8 @@
  * Jurisdiction: ["JAVASCRIPT", "VANILLA", "BROWSER"]
  * Status:      OFFICIAL — Core-Command/Lib (v1.2)
  * Author:      Elton Boehnen
- * Version:     1.2 (OFFICIAL) JSZip Browser Update
- * Date:        2026-04-26
+ * Version:     1.3 OFFICIAL
+ * Date:        2026-05-01
  * Description: MFDB (Multifile Database) core operations — Vanilla JS.
  *              Uses File System Access API & JSZip for .mfdb.zip handling.
  */

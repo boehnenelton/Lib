@@ -3,13 +3,13 @@
  * Jurisdiction: ["JAVASCRIPT", "CORE_COMMAND"]
  * Status:      OFFICIAL — Core-Command/Lib (v1.1)
  * Author:      Elton Boehnen
- * Version:     1.1 (OFFICIAL)
- * Date:        2026-04-23
+ * Version:     1.3 OFFICIAL
+ * Date:        2026-05-01
  * Description: BEJSON validator — schema validation for 104, 104a, 104db.
 MFDB validation functions are in lib_mfdb_validator.js (decoupled).
 Author:      Elton Boehnen
-Version:     3.1.0 (OFFICIAL)
-Date:        2026-04-14
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 * Changelog v3.1.0:
 [FIX] MFDB decoupled: validation engine moved to lib_mfdb_validator.js.
 Unidirectional dependency: MFDB → validator (not vice versa).

@@ -3,8 +3,8 @@
  * Jurisdiction: ["JAVASCRIPT", "CORE_COMMAND"]
  * Status:      OFFICIAL — Core-Command/Lib (v1.2)
  * Author:      Elton Boehnen
- * Version:     1.2 (OFFICIAL) Archive Transport Update
- * Date:        2026-04-26
+ * Version:     1.3 OFFICIAL
+ * Date:        2026-05-01
  * Description: MFDB (Multifile Database) validation library.
  *              v1.2 adds support for validating .mfdb.zip archives.
  */
