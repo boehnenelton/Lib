@@ -1,0 +1,338 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104db",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "Shape",
+    "Connector"
+  ],
+  "Fields": [
+    {
+      "name": "Record_Type_Parent",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "x",
+      "type": "number",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "y",
+      "type": "number",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "w",
+      "type": "number",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "h",
+      "type": "number",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "color",
+      "type": "string",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "fontColor",
+      "type": "string",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "parentId",
+      "type": "string",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "generation",
+      "type": "integer",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "collapsed",
+      "type": "boolean",
+      "Record_Type_Parent": "Shape"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "Record_Type_Parent": "Connector"
+    },
+    {
+      "name": "from",
+      "type": "string",
+      "Record_Type_Parent": "Connector"
+    },
+    {
+      "name": "fromIdx",
+      "type": "integer",
+      "Record_Type_Parent": "Connector"
+    },
+    {
+      "name": "to",
+      "type": "string",
+      "Record_Type_Parent": "Connector"
+    },
+    {
+      "name": "toIdx",
+      "type": "integer",
+      "Record_Type_Parent": "Connector"
+    },
+    {
+      "name": "flow",
+      "type": "string",
+      "Record_Type_Parent": "Connector"
+    }
+  ],
+  "Values": [
+    [
+      "Shape",
+      "s1",
+      250,
+      50,
+      200,
+      120,
+      "Root Node",
+      "#4CAF50",
+      "#FFFFFF",
+      "Top-level entity in the hierarchy",
+      null,
+      0,
+      false,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Shape",
+      "s2",
+      100,
+      300,
+      200,
+      120,
+      "Branch A",
+      "#2196F3",
+      "#FFFFFF",
+      "First major branch off the root",
+      "s1",
+      1,
+      false,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Shape",
+      "s3",
+      400,
+      300,
+      200,
+      120,
+      "Branch B",
+      "#2196F3",
+      "#FFFFFF",
+      "Second major branch off the root",
+      "s1",
+      1,
+      false,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Shape",
+      "s4",
+      50,
+      550,
+      180,
+      100,
+      "Leaf A1",
+      "#FFC107",
+      "#000000",
+      "Sub-item of Branch A",
+      "s2",
+      2,
+      false,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Shape",
+      "s5",
+      250,
+      550,
+      180,
+      100,
+      "Leaf A2",
+      "#FFC107",
+      "#000000",
+      "Another sub-item of Branch A",
+      "s2",
+      2,
+      false,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Shape",
+      "s6",
+      500,
+      550,
+      180,
+      100,
+      "Leaf B1",
+      "#FFC107",
+      "#000000",
+      "Sub-item of Branch B",
+      "s3",
+      2,
+      false,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "Connector",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "c1",
+      "s1",
+      2,
+      "s2",
+      0,
+      "forward"
+    ],
+    [
+      "Connector",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "c2",
+      "s1",
+      2,
+      "s3",
+      0,
+      "forward"
+    ],
+    [
+      "Connector",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "c3",
+      "s2",
+      2,
+      "s4",
+      0,
+      "forward"
+    ],
+    [
+      "Connector",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "c4",
+      "s2",
+      2,
+      "s5",
+      0,
+      "forward"
+    ],
+    [
+      "Connector",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "c5",
+      "s3",
+      2,
+      "s6",
+      0,
+      "forward"
+    ]
+  ]
+}
