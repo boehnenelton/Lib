@@ -2,11 +2,14 @@
 Library:     lib_mfdb_validator.py
 Family:      Core
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — BEJSON-Core/Lib (v1.4)
+Status:      OFFICIAL — Core-Command/Lib (v1.3)
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
-Date:        2026-05-03
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Standard validator for MFDB (Multifile Database) structures.
+             Layers on lib_bejson_validator.py.
+             v1.2 adds support for validating .mfdb.zip archives.
+             v1.3 adds support for Federation headers.
 """
 import json
 import os

@@ -1,13 +1,17 @@
 """
+[PUBLISH: TRUE, TARGET: FIREBASE]
 Library:     lib_bejson_html2_skeletons.py
-Family:      Core
+Family:      HTML
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — BEJSON-Core/Lib (v1.4)
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
-Date:        2026-05-03
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Authoritative HTML/CSS skeleton templates for Core-Command.
+             Implements the Unified Dashboard Architecture (v4.1.0).
+             Features: Tree-view Sidebar, Elton Boehnen Credits Footer.
 """
+
 import html as html_mod
 import json
 

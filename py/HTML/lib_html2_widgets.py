@@ -1,12 +1,13 @@
 """
 Library:     lib_html2_widgets.py
-Family:      Core
+Family:      HTML
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — BEJSON-Core/Lib (v1.4)
+Status:      OFFICIAL
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
-Date:        2026-05-03
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: UI widgets and plugins for BEJSON HTML generation.
+             Refactored to follow Modular CSS Policy (centralized in skeletons).
 """
 import html as html_mod
 import os

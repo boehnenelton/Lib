@@ -1,10 +1,11 @@
 """
 Library:     lib_bejson_genai.py
-Jurisdiction: ["PYTHON", "CORE_COMMAND"]
-Status:      OFFICIAL — Core-Command/Lib (v1.1)
+Family:      AI
+Jurisdiction: ["PYTHON", "SWITCH_CORE"]
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.1 (OFFICIAL)
-Date:        2026-04-23
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Gemini GenAI (SDK) integration library following the GENAI-POLICY.
              Handles round-robin key rotation, model selection (v2.5+),
              and mandatory status feedback for no-hang operations.
@@ -29,7 +30,7 @@ C_YELLOW = "\033[93m"
 C_NC = "\033[0m"
 C_BOLD = "\033[1m"
 
-DEFAULT_KEY_FILE = "/data/data/com.termux/files/home/.env/api_keys_v2_decrypted.104a.bejson"
+DEFAULT_KEY_FILE = "/data/data/com.termux/files/home/.env/gemini_keys.bejson"
 
 MODELS = [
     "gemini-3-flash-preview",

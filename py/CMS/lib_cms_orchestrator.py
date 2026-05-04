@@ -1,10 +1,11 @@
 """
 Library:     lib_cms_orchestrator.py
-Jurisdiction: ["PYTHON", "CORE_COMMAND"]
-Status:      OFFICIAL — Core-Command/Lib (v1.1)
+Family:      CMS
+Jurisdiction: ["PYTHON", "SWITCH_CORE"]
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.1 (OFFICIAL) CoreEvo fork
-Date:        2026-04-23
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: High-level Orchestrator for the BEJSON Modular CMS Backend.
              Provides a unified API for site config, taxonomy, and content.
              Part of the Modular CMS Backend Framework.

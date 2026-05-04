@@ -1,12 +1,14 @@
 """
 Library:     lib_html2_page_templates.py
-Family:      Core
+Family:      HTML
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — BEJSON-Core/Lib (v1.4)
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
-Date:        2026-05-03
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Full HTML Dashboard templates for BEJSON data.
+             Unified Dashboard Architecture v4.2.
+             Fixed: Strict active link matching and robust sidebar HTML.
 """
 import html as html_mod
 import os

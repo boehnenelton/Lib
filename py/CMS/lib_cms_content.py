@@ -1,10 +1,11 @@
 """
 Library:     lib_cms_content.py
-Jurisdiction: ["PYTHON", "CORE_COMMAND"]
-Status:      OFFICIAL — Core-Command/Lib (v1.1)
+Family:      CMS
+Jurisdiction: ["PYTHON", "SWITCH_CORE"]
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.1 (OFFICIAL)
-Date:        2026-04-23
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Core content management library for Page and Article CRUD.
              Handles dual-file BEJSON structure (Master Index + Content JSON).
              Part of the Modular CMS Backend Framework.

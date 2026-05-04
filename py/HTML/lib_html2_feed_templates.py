@@ -1,12 +1,13 @@
 """
 Library:     lib_html2_feed_templates.py
-Family:      Core
+Family:      HTML
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — BEJSON-Core/Lib (v1.4)
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
-Date:        2026-05-03
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Card grid and feed templates for BEJSON data.
+             Aligned with CSS Policy v3.0 (BEM .card-grid / .card).
 """
 import html as html_mod
 

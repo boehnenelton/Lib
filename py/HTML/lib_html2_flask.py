@@ -1,13 +1,15 @@
 """
 Library:     lib_html2_flask.py
-Family:      Core
+Family:      HTML
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — BEJSON-Core/Lib (v1.4)
+Status:      OFFICIAL — Core-Command/Lib (v1.2)
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
-Date:        2026-05-03
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: High-level Flask integration for the html2 library suite.
+             Automates dashboard assembly, stats, and MFDB data rendering.
 """
+
 import os
 import json
 import uuid

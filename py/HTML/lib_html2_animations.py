@@ -1,13 +1,15 @@
 """
 Library:     lib_html2_animations.py
-Family:      Core
+Family:      HTML
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — BEJSON-Core/Lib (v1.4)
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
-Date:        2026-05-03
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Authoritative CSS/JS Animation Components for Core-Command.
+             Integrates Terminal Typing, Glitch Reveals, and Bracket Slams.
 """
+
 def css_animation_keyframes():
     """Returns global keyframes for system animations."""
     return """

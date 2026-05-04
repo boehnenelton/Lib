@@ -1,10 +1,11 @@
 """
 Library:     lib_be_project_service.py
-Jurisdiction: ["PYTHON", "CORE_COMMAND"]
-Status:      OFFICIAL — Core-Command/Lib (v1.1)
+Family:      System
+Jurisdiction: ["PYTHON", "SWITCH_CORE"]
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.1 (OFFICIAL)
-Date:        2026-04-23
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Core-Command library component.
 """
 import os

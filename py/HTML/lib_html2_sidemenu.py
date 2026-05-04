@@ -1,12 +1,13 @@
 """
 Library:     lib_html2_sidemenu.py
-Family:      Core
+Family:      HTML
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — BEJSON-Core/Lib (v1.4)
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
-Date:        2026-05-03
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Navigation components for BEJSON HTML generation.
+             Aligned with CSS Policy v3.0 (BEM top-bar/sidebar).
 """
 import html as html_mod
 

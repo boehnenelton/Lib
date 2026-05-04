@@ -1,8 +1,8 @@
 """
 Library:     lib_cms_mfdb.py
+Family:      CMS
 Description: MFDB-based CMS manager for the BEJSON CMS system.
              v1.2: Implements Archive Transport (Mount-Commit) and Dirty State tracking.
-             v1.3: Federation and Native Array support.
 """
 import os
 import sys
@@ -21,7 +21,6 @@ if LIB_DIR not in sys.path:
 
 import lib_bejson_core as BEJSONCore
 import lib_mfdb_core as MFDBCore
-import lib_mfdb_validator as MFDBValidator
 
 class MFDB_CMS_Manager:
     def __init__(self, data_root: str):
@@ -42,20 +41,9 @@ class MFDB_CMS_Manager:
         self.content_archive = os.path.join(data_root, "content_master.mfdb.zip")
 
         self.is_dirty = False
-        self.network_role = "Standalone"  # Default
         
         if not os.path.exists(self.assets_dir): os.makedirs(self.assets_dir)
         if not os.path.exists(self.apps_dir): os.makedirs(self.apps_dir)
-
-    def detect_network_role(self):
-        """Audit the system to detect its federation role."""
-        if os.path.exists(self.global_manifest):
-            try:
-                MFDBValidator.mfdb_validator_validate_manifest(self.global_manifest)
-                findings = MFDBValidator.mfdb_validator_get_findings()
-                self.network_role = findings.get("Network_Role", "Standalone")
-            except:
-                self.network_role = "Standalone"
 
     def set_dirty(self):
         self.is_dirty = True
@@ -84,7 +72,6 @@ class MFDB_CMS_Manager:
 
         MFDBCore.MFDBArchive.mount(self.global_archive, self.global_db_root, force=force)
         MFDBCore.MFDBArchive.mount(self.content_archive, self.content_db_root, force=force)
-        self.detect_network_role()
         self.clear_dirty()
 
     def repack_system(self):
@@ -170,17 +157,6 @@ class MFDB_CMS_Manager:
                         {"name": "mime_type", "type": "string"},
                         {"name": "uploaded_at", "type": "string"}
                     ]
-                },
-                {
-                    "name": "ConnectedSlave",
-                    "primary_key": "label",
-                    "fields": [
-                        {"name": "label", "type": "string"},
-                        {"name": "url", "type": "string"},
-                        {"name": "role", "type": "string"},
-                        {"name": "status", "type": "string"},
-                        {"name": "supported_entities", "type": "array"}
-                    ]
                 }
             ]
             MFDBCore.mfdb_core_create_database(
@@ -188,13 +164,8 @@ class MFDB_CMS_Manager:
                 db_name="BEJSON CMS Global",
                 entities=global_entities
             )
-            # Declare Master Node (v1.21 PascalCase Custom Header)
-            g_doc = BEJSONCore.bejson_core_load_file(self.global_manifest)
-            g_doc["Network_Role"] = "Master"
-            BEJSONCore.bejson_core_atomic_write(self.global_manifest, g_doc)
-
             self.add_global_config("site_title", "boehnenelton2024")
-            self.add_global_config("site_tagline", "Powered by BEJSON MFDB CMS")
+            self.add_global_config("site_tagline", "Premium Dark Theme Templates")
             self.add_global_config("base_url", "https://boehnenelton2024.pages.dev")
             
             # Seed Social Links
@@ -262,7 +233,6 @@ class MFDB_CMS_Manager:
                 entities=content_entities
             )
             self.add_category("Uncategorized", "uncategorized", "General posts", "blog")
-            self.detect_network_role()
 
     # --- Global Helpers ---
     def add_global_config(self, key: str, value: str, desc: str = ""):
@@ -367,14 +337,6 @@ class MFDB_CMS_Manager:
     def add_category(self, name: str, slug: str, desc: str, feed_type: str):
         MFDBCore.mfdb_core_add_entity_record(self.content_manifest, "Category", [name, slug, desc, feed_type])
         self.set_dirty()
-
-    def ensure_category(self, name: str, slug: str, desc: str, feed_type: str):
-        """Checks if a category exists by slug, if not, creates it."""
-        recs = MFDBCore.mfdb_core_load_entity(self.content_manifest, "Category")
-        for r in recs:
-            if r["slug"] == slug:
-                return
-        self.add_category(name, slug, desc, feed_type)
 
     def update_category(self, slug: str, name: str, desc: str, feed_type: str):
         recs = MFDBCore.mfdb_core_load_entity(self.content_manifest, "Category")

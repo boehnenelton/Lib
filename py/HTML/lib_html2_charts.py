@@ -1,13 +1,16 @@
 """
+[PUBLISH: TRUE, TARGET: FIREBASE]
 Library:     lib_html2_charts.py
-Family:      Core
+Family:      HTML
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — BEJSON-Core/Lib (v1.4)
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
-Date:        2026-05-03
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Chart.js visualization wrappers for the Unified Dashboard Architecture.
+             Includes full charts and minimalist sparklines.
 """
+
 import json
 import uuid
 

@@ -1,10 +1,11 @@
 """
 Library:     lib_bejson_gemprofiles.py
+Family:      AI
 Jurisdiction: ["PYTHON", "PROFILES"]
 Status:      OFFICIAL — Core-Command/Lib (v1.0)
 Author:      Elton Boehnen
-Version:     1.0 (OFFICIAL)
-Date:        2026-04-25
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: AI Profile specialized library for BEJSON 104. 
              Provides validation and generation logic for profile-specific schemas.
 """

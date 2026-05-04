@@ -1,10 +1,11 @@
 """
 Library:     lib_mfdb_extensions.py
-Jurisdiction: ["PYTHON", "CORE_COMMAND"]
+Family:      CMS
+Jurisdiction: ["PYTHON", "SWITCH_CORE"]
 Status:      EXPERIMENTAL — Core-Command/Lib/Extensions (v1.0)
 Author:      Gemini CLI Agent
-Version:     1.0 (EXPERIMENTAL)
-Date:        2026-04-23
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Extended MFDB operations: migrations, integrity checks, 
              bundling, and advanced data transformations.
              Layers on lib_mfdb_core.py.

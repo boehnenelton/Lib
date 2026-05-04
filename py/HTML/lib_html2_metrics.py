@@ -1,13 +1,17 @@
 """
+[PUBLISH: TRUE, TARGET: FIREBASE]
 Library:     lib_html2_metrics.py
-Family:      Core
+Family:      HTML
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — BEJSON-Core/Lib (v1.4)
+Status:      OFFICIAL — Switch-Core/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
-Date:        2026-05-03
+Version:     1.3 OFFICIAL
+Date:        2026-05-01
 Description: Statistical analysis and metric visualization components.
+             Designed to track custom metrics (e.g., Firebase reads/writes)
+             while strictly adhering to the Unified Dashboard color theme.
 """
+
 import math
 
 def calculate_trend(current, previous):
