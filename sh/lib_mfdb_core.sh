@@ -4,8 +4,8 @@
 # Jurisdiction: ["BASH", "CORE_COMMAND"]
 # Status:      OFFICIAL — Core-Command/Lib (v1.2)
 # Author:      Elton Boehnen
-# Version:     1.2 (OFFICIAL) Archive Transport Update
-# Date:        2026-04-26
+# Version:     1.3 OFFICIAL
+# Date:        2026-05-01
 # Description: MFDB (Multifile Database) core operations for Bash/Termux.
 #              v1.2 adds support for .mfdb.zip transport and virtual mounting.
 #===============================================================================

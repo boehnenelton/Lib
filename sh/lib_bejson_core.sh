@@ -4,8 +4,8 @@
 # Jurisdiction: ["BASH", "CORE_COMMAND"]
 # Status:      OFFICIAL — Core-Command/Lib (v1.2)
 # Author:      Elton Boehnen
-# Version:     3.1.0 (OFFICIAL)
-# Date:        2026-04-16
+# Version:     1.3 OFFICIAL
+# Date:        2026-05-01
 # Description: BEJSON core library — document creation, mutation, validation,
 #              atomic file I/O with sync, and query/sort utilities.
 #              MFDB relational functions are in lib_mfdb_core.sh (decoupled).

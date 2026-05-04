@@ -4,8 +4,8 @@
 # Jurisdiction: ["BASH", "CORE_COMMAND"]
 # Status:      OFFICIAL — Core-Command/Lib (v1.2)
 # Author:      Elton Boehnen
-# Version:     3.1.0 (OFFICIAL)
-# Date:        2026-04-16
+# Version:     1.3 OFFICIAL
+# Date:        2026-05-01
 # Description: BEJSON validator — schema validation for 104, 104a, 104db.
 #              MFDB validation functions are in lib_mfdb_validator.sh (decoupled).
 #===============================================================================
