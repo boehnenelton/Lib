@@ -1,5 +1,12 @@
 """
 Library:     lib_bejson_groq.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_bejson_groq.py
 Family:      AI
 Jurisdiction: ["PYTHON", "CORE_COMMAND", "GROQ_STANDARD"]
 Status:      OFFICIAL_STANDARD
@@ -261,9 +268,9 @@ class GroqStandardPrompter:
 
 # --- Global Standard Paths (2026) ---
 
-STD_KEY_PATH = "/data/data/com.termux/files/home/.env/groq_keys.bejson"
-STD_MODEL_PATH = "/storage/emulated/0/dev/Standardization/groq_model_registry.104a.bejson"
-STD_PROFILE_PATH = "/storage/emulated/0/dev/Standardization/groq_standard_profile.bejson"
+STD_KEY_PATH = "/Data/Data/com.termux/files/home/.env/groq_keys.bejson"
+STD_MODEL_PATH = "{SC_ROOT}/Schemas/groq_model_registry.104a.bejson"
+STD_PROFILE_PATH = "{SC_ROOT}/Schemas/groq_standard_profile.bejson"
 
 def get_standard_prompter():
     return GroqStandardPrompter(STD_KEY_PATH, STD_MODEL_PATH, STD_PROFILE_PATH)

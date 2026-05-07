@@ -1,3 +1,6 @@
+"""
+MFDB Version: 1.3.1
+"""
 
 import os
 import sys

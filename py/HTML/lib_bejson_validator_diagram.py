@@ -1,5 +1,12 @@
 """
 Library:     lib_bejson_validator_diagram.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_bejson_validator_diagram.py
 Family:      HTML
 Version:     1.3 OFFICIAL
 Description: BEJSON Diagram validator and HTML exporter.

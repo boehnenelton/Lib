@@ -1,3 +1,11 @@
+/*
+Library:     bejson_core.ts
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+*/
+
 /**
  * Library:     bejson_core.ts
  * Jurisdiction: ["TYPESCRIPT", "CORE_COMMAND"]

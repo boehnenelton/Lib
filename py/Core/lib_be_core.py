@@ -1,8 +1,15 @@
 """
 Library:     lib_be_core.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_be_core.py
 Family:      Core
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — Switch-Core/Lib (v1.4)
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
+Status:      OFFICIAL — BEJSON/Lib (v1.4)
 Author:      Elton Boehnen
 Version:     1.3 OFFICIAL
 Date:        2026-05-01

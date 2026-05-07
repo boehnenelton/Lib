@@ -4,6 +4,7 @@ Library:     lib_mfdb_validator.py
 Family:      Core
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
 Status:      OFFICIAL — Core-Command/Lib (v1.3)
+MFDB Version: 1.3.1
 Author: Elton Boehnen
 Version:     1.3 OFFICIAL
 Date:        2026-05-01

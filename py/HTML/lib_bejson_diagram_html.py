@@ -1,5 +1,12 @@
 """
 Library:     lib_bejson_diagram_html.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_bejson_diagram_html.py
 Family:      HTML
 Version:     1.3 OFFICIAL
 Description: Advanced HTML/SVG rendering engine for BEJSON 104db diagrams.

@@ -1,13 +1,20 @@
 """
 Library:     lib_bejson_genai.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_bejson_genai.py
 Family:      AI
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — Switch-Core/Lib (v1.4)
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
+Status:      OFFICIAL — BEJSON/Lib (v1.4)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
-Date:        2026-05-01
+Version:     1.4 OFFICIAL
+Date:        2026-05-06
 Description: Gemini GenAI (SDK) integration library following the GENAI-POLICY.
-             Handles round-robin key rotation, model selection (v2.5+),
+             Handles round-robin key rotation, model selection (v3.1+),
              and mandatory status feedback for no-hang operations.
 """
 import os
@@ -30,16 +37,20 @@ C_YELLOW = "\033[93m"
 C_NC = "\033[0m"
 C_BOLD = "\033[1m"
 
-DEFAULT_KEY_FILE = "/data/data/com.termux/files/home/.env/gemini_keys.bejson"
+DEFAULT_KEY_FILE = "/Data/Data/com.termux/files/home/.env/gemini_keys.bejson"
 
 MODELS = [
-    "gemini-3-flash-preview",
-    "gemini-flash-lite-latest",
-    "gemini-flash-latest",
-    "gemini-2.5",
+    "gemini-3.1-pro-preview",
     "gemini-2.5-pro",
-    "gemini-3-pro-preview",
-    "gemini-3.1-pro-preview"
+    "gemini-3-flash-preview",
+    "gemini-3.1-flash-lite-preview",
+    "gemini-2.5-flash",
+    "gemini-3-pro-image-preview",
+    "gemini-3.1-flash-image-preview",
+    "gemini-3.1-flash-tts-preview",
+    "gemini-3.1-flash-live-preview",
+    "gemma-4-31b-it",
+    "gemma-4-26b-a4b-it"
 ]
 
 class GenAIKeyManager:
@@ -173,4 +184,3 @@ class GenAIClient:
 
         self.update_status("error", "ALL KEYS EXHAUSTED")
         return None
-

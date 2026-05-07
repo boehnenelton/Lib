@@ -1,215 +1,127 @@
 """
 Library:     lib_html2_body.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_html2_body.py
 Family:      HTML
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
+Status:      OFFICIAL — BEJSON/Lib (v1.7)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
-Date:        2026-05-01
-Description: Content components for Unified Dashboard v4.0.
-             Implements Glass Stats, BEM Cards, and Status Badges.
+Version:     1.7 OFFICIAL
+Date:        2026-05-06
+Description: Content components for Modern Flat UI (v6.0).
+             Updated: Square buttons, high-contrast tables.
 """
 import html as html_mod
 
 def html_stats_bar(stats_list):
-    """
-    Generate a glass stats bar.
-    :param stats_list: List of {"label": "...", "value": "..."}
-    """
     if not stats_list: return ""
     items = ""
     for s in stats_list:
         label = html_mod.escape(str(s.get("label", "")))
         value = html_mod.escape(str(s.get("value", "")))
         items += f"""
-        <div class="glass-stats__item">
-            <span class="glass-stats__label">{label}</span>
-            <span class="glass-stats__value">{value}</span>
+        <div style="flex:1;">
+            <div style="font-size: 0.65rem; color: var(--text-muted); font-family: var(--font-mono); text-transform: uppercase;">{label}</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">{value}</div>
         </div>"""
-    return f'<div class="glass-stats">{items}</div>'
-
-def html_subtabs(tabs):
-    """
-    Generate horizontal sub-navigation tabs for the dashboard body.
-    :param tabs: List of dicts with {"label": "...", "id": "...", "active": bool}
-    """
-    if not tabs: return ""
-    items = ""
-    for t in tabs:
-        active_class = " subtabs__btn--active" if t.get("active") else ""
-        label = html_mod.escape(str(t.get("label", "")))
-        tab_id = html_mod.escape(str(t.get("id", "")))
-        items += f'<button class="subtabs__btn{active_class}" onclick="switchSubTab(\'{tab_id}\')">{label}</button>\n'
-    return f'<div class="subtabs">{items}</div>'
-
-def html_tab_content(tab_id, content, active=False):
-    """Wraps content in a tab pane."""
-    style = "display: block;" if active else "display: none;"
-    return f'<div id="{html_mod.escape(tab_id)}" class="tab-content" style="{style}">{content}</div>'
+    return f'<div style="display:flex; gap:24px; padding:24px; background:var(--bg-surface); margin-bottom:24px; border-left: 4px solid var(--primary);">{items}</div>'
 
 def html_card(title, body):
-    """Generate a dashboard card."""
     return f"""
     <div class="card">
         <h2 class="card__title">{html_mod.escape(title)}</h2>
-        <p>{body}</p>
+        <div style="font-size:0.95rem; color:var(--text-main);">{body}</div>
     </div>"""
 
-def html_card_grid(cards_html):
-    """Wraps cards in a grid."""
-    return f'<div class="card-grid">{cards_html}</div>'
-
-def html_drawer(drawer_id, title, content):
-    """Generate a slide-out drawer component."""
+def html_brutal_card(title, content):
+    """Modernized Brutalist Card."""
     return f"""
-    <div id="{drawer_id}" class="drawer">
-        <div class="drawer__header">
-            <span class="drawer__title">{html_mod.escape(title)}</span>
-            <button class="drawer__close" onclick="closeDrawer('{drawer_id}')">&times;</button>
-        </div>
-        <div class="drawer__content">{content}</div>
-    </div>
-    <div id="{drawer_id}_overlay" class="drawer-overlay" onclick="closeDrawer('{drawer_id}')"></div>
-    <style>
-    .drawer {{ position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: var(--bg-surface); z-index: 3000; transition: right 0.3s ease; border-left: 1px solid var(--border); box-shadow: -5px 0 15px rgba(0,0,0,0.1); }}
-    .drawer--open {{ right: 0; }}
-    .drawer__header {{ padding: 15px; background: #eee; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }}
-    .drawer__title {{ font-family: var(--font-mono); font-weight: bold; font-size: 14px; text-transform: uppercase; color: var(--primary-red); }}
-    .drawer__close {{ background: none; border: none; font-size: 24px; cursor: pointer; color: #888; }}
-    .drawer__content {{ padding: 20px; height: calc(100% - 50px); overflow-y: auto; }}
-    .drawer-overlay {{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2999; }}
-    .drawer-overlay--open {{ display: block; }}
-    </style>
-    <script>
-    function openDrawer(id) {{ 
-        document.getElementById(id).classList.add('drawer--open'); 
-        document.getElementById(id + '_overlay').classList.add('drawer-overlay--open'); 
-    }}
-    function closeDrawer(id) {{ 
-        document.getElementById(id).classList.remove('drawer--open'); 
-        document.getElementById(id + '_overlay').classList.remove('drawer-overlay--open'); 
-    }}
-    </script>
-    """
+    <div class="card">
+        <div style="font-size: 0.7rem; font-weight: 800; color:var(--text-muted); font-family: var(--font-mono); margin-bottom: 12px; text-transform: uppercase;">{html_mod.escape(title.upper())}</div>
+        <div>{content}</div>
+    </div>"""
 
-def html_property_list(props):
-    """Generate a vertical key-value list."""
+def html_brutal_table(headers, rows, escape=True):
+    """High-Contrast Table."""
+    h_html = "".join([f"<th>{html_mod.escape(h)}</th>" for h in headers])
+    r_html = ""
+    for row in rows:
+        cells = []
+        for v in row:
+            val = str(v)
+            if escape: val = html_mod.escape(val)
+            cells.append(f"<td>{val}</td>")
+        r_html += "<tr>" + "".join(cells) + "</tr>"
+    return f'<div class="table-container"><table class="data-table"><thead><tr>{h_html}</tr></thead><tbody>{r_html}</tbody></table></div>'
+
+def html_subtabs(tabs):
+    if not tabs: return ""
     items = ""
-    for p in props:
-        key = html_mod.escape(str(p.get("key", "")))
-        val = html_mod.escape(str(p.get("value", "")))
-        items += f"""
-        <div class="prop-list__item">
-            <span class="prop-list__key">{key}</span>
-            <span class="prop-list__val">{val}</span>
-        </div>"""
-    return f"""
-    <div class="prop-list">{items}</div>
-    <style>
-    .prop-list {{ border: 1px solid var(--border); background: #fff; }}
-    .prop-list__item {{ display: flex; justify-content: space-between; padding: 8px 15px; border-bottom: 1px solid #f0f0f0; font-family: var(--font-mono); font-size: 13px; }}
-    .prop-list__item:last-child {{ border-bottom: none; }}
-    .prop-list__key {{ color: #777; }}
-    .prop-list__val {{ color: #000; font-weight: bold; }}
-    </style>
-    """
+    for t in tabs:
+        active_class = " background:var(--primary); color:white;" if t.get("active") else " color:var(--text-muted);"
+        label = html_mod.escape(str(t.get("label", "")))
+        tab_id = html_mod.escape(str(t.get("id", "")))
+        items += f'<button class="subtabs__btn" style="border:none; padding:10px 20px; border-radius:0; font-weight:800; font-size:0.8rem; cursor:pointer; font-family:var(--font-base);{active_class}" onclick="switchSubTab(\'{tab_id}\'); this.parentElement.querySelectorAll(\'.subtabs__btn\').forEach(b => {{ b.style.background=\'transparent\'; b.style.color=\'var(--text-muted)\' }}); this.style.background=\'var(--primary)\'; this.style.color=\'white\';">{label}</button>\n'
+    return f'<div style="display:flex; gap:0; margin-bottom:12px; border: 1px solid var(--border); width: fit-content;">{items}</div>'
 
-def html_gauge(label, percent, variant=""):
-    """Generate a health/progress gauge."""
-    color = "var(--primary-red)"
-    if variant == "success": color = "#00FF00"
-    elif variant == "warning": color = "#FFA500"
-    
-    return f"""
-    <div class="gauge-container">
-        <div class="gauge__label">{html_mod.escape(label)} <span class="gauge__value">{percent}%</span></div>
-        <div class="gauge__track">
-            <div class="gauge__bar" style="width: {percent}%; background: {color};"></div>
-        </div>
-    </div>
-    <style>
-    .gauge-container {{ margin: 10px 0; }}
-    .gauge__label {{ font-family: var(--font-mono); font-size: 11px; margin-bottom: 5px; color: #555; text-transform: uppercase; }}
-    .gauge__value {{ float: right; color: var(--text-main); font-weight: bold; }}
-    .gauge__track {{ height: 6px; background: #eee; border-radius: 3px; overflow: hidden; }}
-    .gauge__bar {{ height: 100%; transition: width 0.5s ease; }}
-    </style>
-    """
-
-def html_badge(text, variant=""):
-    """
-    Generate a status badge.
-    Variant can be 'success', 'fail', or empty for neutral.
-    """
-    style = ""
-    if variant == "success": style = "color:#00FF00;"
-    elif variant == "fail": style = "color:#FF0000;"
-    return f'<span class="badge" style="font-family:var(--font-mono);font-weight:bold;{style}">[{html_mod.escape(text.upper())}]</span>'
-
-def html_action_list(items):
-    """
-    Generate a list of items with action buttons.
-    :param items: List of {"label": "...", "action_label": "...", "onclick": "..."}
-    """
-    html_items = ""
-    for item in items:
-        label = html_mod.escape(item.get("label", ""))
-        action = html_mod.escape(item.get("action_label", "View"))
-        onclick = item.get("onclick", "")
-        html_items += f"""
-        <div class="action-list__item">
-            <span class="action-list__label">{label}</span>
-            <button class="form__button form__button--outline" style="padding: 4px 12px; font-size: 10px;" onclick="{onclick}">{action}</button>
-        </div>"""
-    return f"""
-    <div class="action-list">{html_items}</div>
-    <style>
-    .action-list {{ border: 1px solid var(--border); background: #fff; }}
-    .action-list__item {{ display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 1px solid #f0f0f0; }}
-    .action-list__item:last-child {{ border-bottom: none; }}
-    .action-list__label {{ font-family: var(--font-base); font-size: 14px; color: #333; }}
-    </style>
-    """
+def html_tab_content(tab_id, content, active=False):
+    style = "display: block;" if active else "display: none;"
+    return f'<div id="{html_mod.escape(tab_id)}" class="tab-content" style="{style}">{content}</div>'
 
 def html_description_list(props):
-    """
-    Generate a technical description list (DL).
-    :param props: List of {"term": "...", "description": "..."}
-    """
     html_items = ""
     for p in props:
         term = html_mod.escape(p.get("term", ""))
         desc = html_mod.escape(p.get("description", ""))
-        html_items += f"<dt class='desc-list__term'>{term}</dt><dd class='desc-list__desc'>{desc}</dd>"
-    return f"""
-    <dl class="desc-list">{html_items}</dl>
-    <style>
-    .desc-list {{ display: grid; grid-template-columns: max-content 1fr; gap: 10px 20px; }}
-    .desc-list__term {{ font-family: var(--font-mono); font-weight: bold; color: var(--primary-red); text-transform: uppercase; font-size: 11px; }}
-    .desc-list__desc {{ font-family: var(--font-base); font-size: 14px; color: #555; margin-left: 0; }}
-    </style>
-    """
+        html_items += f"<div style='margin-bottom:12px; border-left: 2px solid var(--border); padding-left: 12px;'><dt style='font-size:0.65rem; font-family:var(--font-mono); color:var(--text-muted); text-transform:uppercase;'>{term}</dt><dd style='font-weight:700; font-size:1rem;'>{desc}</dd></div>"
+    return f"<dl style='display:grid; grid-template-columns: 1fr 1fr; gap:16px;'>{html_items}</dl>"
 
-def html_status_panel(title, content, status="ONLINE"):
-    """Generate a themed status panel."""
-    indicator_color = "#00FF00" if status == "ONLINE" else "#FF0000"
+def html_badge(text, variant=""):
+    color = "var(--text-muted)"
+    if variant == "success": color = "#ADFF2F"
+    elif variant == "fail": color = "#FF4500"
+    return f'<span style="font-family:var(--font-mono); font-size:0.65rem; font-weight:800; color:{color}; padding:2px 8px; background:rgba(255,255,255,0.05); border-radius:0;">{html_mod.escape(text.upper())}</span>'
+
+def html_card_grid(content):
+    return f'<div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:24px;">{content}</div>'
+
+def html_code_box(title, content, copy_id=None):
+    """
+    Renders content in a terminal-style code box with a copy button.
+    """
+    import time
+    if not copy_id:
+        copy_id = f"code_{int(time.time() * 1000)}"
+        
     return f"""
-    <div class="status-panel">
-        <div class="status-panel__header">
-            <span>{html_mod.escape(title)}</span>
-            <span class="status-panel__indicator" style="background: {indicator_color};"></span>
-            <span class="status-panel__status">{status}</span>
+    <div style="background: #000; border-left: 4px solid var(--primary); margin: 24px 0; position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 16px; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--primary); font-weight: 800; text-transform: uppercase;">
+                FILE // {html_mod.escape(title)}
+            </div>
+            <button onclick="copyToClipboard('{copy_id}')" style="background: var(--primary); color: white; border: none; padding: 4px 12px; font-size: 0.65rem; font-weight: 800; cursor: pointer; text-transform: uppercase;">
+                Copy
+            </button>
         </div>
-        <div class="status-panel__body">{content}</div>
+        <pre id="{copy_id}" style="margin: 0; padding: 20px; color: #ADFF2F; font-family: var(--font-mono); font-size: 0.85rem; border: none; border-left: none;"><code>{html_mod.escape(content)}</code></pre>
     </div>
-    <style>
-    .status-panel {{ border: 1px solid var(--border); background: #fff; margin-bottom: 20px; }}
-    .status-panel__header {{ 
-        padding: 8px 15px; background: #f8f8f8; border-bottom: 1px solid var(--border);
-        display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-weight: bold; font-size: 12px;
-    }}
-    .status-panel__indicator {{ width: 8px; height: 8px; border-radius: 50%; }}
-    .status-panel__status {{ margin-left: auto; color: {indicator_color}; }}
-    .status-panel__body {{ padding: 15px; }}
-    </style>
+    <script>
+        if (typeof copyToClipboard !== 'function') {{
+            window.copyToClipboard = (id) => {{
+                const el = document.getElementById(id);
+                const text = el.innerText;
+                navigator.clipboard.writeText(text).then(() => {{
+                    const btn = event.target;
+                    const oldText = btn.innerText;
+                    btn.innerText = 'Copied!';
+                    setTimeout(() => btn.innerText = oldText, 2000);
+                }});
+            }};
+        }}
+    </script>
     """

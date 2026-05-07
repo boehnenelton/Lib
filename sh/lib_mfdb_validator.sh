@@ -1,11 +1,17 @@
 #!/bin/bash
+# # Library:     lib_mfdb_validator.sh
+# MFDB Version: 1.3.1
+# Format_Creator: Elton Boehnen
+# Status:      OFFICIAL - v1.3.1
+# Date:        2026-05-06
+
 #===============================================================================
 # Library:     lib_mfdb_validator.sh
 # Jurisdiction: ["BASH", "CORE_COMMAND"]
 # Status:      OFFICIAL — Core-Command/Lib (v1.2)
 # Author:      Elton Boehnen
-# Version:     1.3 OFFICIAL
-# Date:        2026-05-01
+# Version:     1.2 (OFFICIAL) Archive Transport Update
+# Date:        2026-04-26
 # Description: MFDB (Multifile Database) validation library for Bash/Termux.
 #              v1.2 adds support for validating .mfdb.zip archives.
 #===============================================================================

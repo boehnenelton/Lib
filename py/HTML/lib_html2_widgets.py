@@ -1,7 +1,14 @@
 """
 Library:     lib_html2_widgets.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_html2_widgets.py
 Family:      HTML
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
 Status:      OFFICIAL
 Author:      Elton Boehnen
 Version:     1.3 OFFICIAL
@@ -255,7 +262,7 @@ def html_dialog(dialog_id, title, content, actions_html=""):
 def html_load_widget(widget_name, components_dir=None, container_id=None):
     """Loads an external HTML component."""
     if not components_dir:
-        components_dir = os.environ.get("CC_COMPONENTS", "/storage/7B30-0E0B/Core-Command/Templates/Components")
+        components_dir = os.environ.get("CC_COMPONENTS", "{SC_ROOT}/Templates/Components")
     
     path = Path(components_dir) / f"{widget_name}.html"
     if not path.exists():

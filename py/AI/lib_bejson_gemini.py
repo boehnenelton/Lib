@@ -1,11 +1,18 @@
 """
 Library:     lib_bejson_gemini.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_bejson_gemini.py
 Family:      AI
 Jurisdiction: ["PYTHON", "CORE_COMMAND", "GEMINI_STANDARD"]
 Status:      OFFICIAL_STANDARD
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
-Date:        2026-05-01
+Version:     1.4 OFFICIAL
+Date:        2026-05-06
 Description: Unified Gemini standard library for BEJSON 104/104a.
              Schemas are EMBEDDED to ensure global consistency.
              Integrates Key Registry, Model Registry, and AI Profiles.
@@ -50,11 +57,17 @@ SCHEMA_MODEL_REGISTRY = {
         {"name": "google_search_enabled", "type": "boolean"}
     ],
     "Values": [
-        ["Gemini 3.1 Pro (Preview)", "gemini-3.1-pro-preview", False, True, True],
-        ["Gemini 3 Flash (Preview)", "gemini-3-flash-preview", True, False, True],
+        ["Gemini 3.1 Pro (Preview)", "gemini-3.1-pro-preview", True, True, True],
+        ["Gemini 2.5 Pro", "gemini-2.5-pro", False, True, True],
+        ["Gemini 3 Flash (Preview)", "gemini-3-flash-preview", False, False, True],
         ["Gemini 3.1 Flash-Lite (Preview)", "gemini-3.1-flash-lite-preview", False, False, True],
-        ["Gemini Flash-Lite (Latest)", "gemini-flash-lite-latest", False, False, True],
-        ["Gemini 2.5 Flash", "gemini-2.5-flash", False, False, False]
+        ["Gemini 2.5 Flash", "gemini-2.5-flash", False, False, False],
+        ["Gemini 3 Pro Image (Preview)", "gemini-3-pro-image-preview", False, False, False],
+        ["Gemini 3.1 Flash Image (Preview)", "gemini-3.1-flash-image-preview", False, False, False],
+        ["Gemini 3.1 Flash TTS (Preview)", "gemini-3.1-flash-tts-preview", False, False, False],
+        ["Gemini 3.1 Flash Live (Preview)", "gemini-3.1-flash-live-preview", False, False, True],
+        ["Gemma 4 31B IT", "gemma-4-31b-it", False, False, False],
+        ["Gemma 4 26B MoE IT", "gemma-4-26b-a4b-it", False, False, False]
     ]
 }
 
@@ -148,7 +161,7 @@ class GeminiModelRegistry:
     def __init__(self, file_path: Union[str, Path]):
         self.file_path = Path(file_path)
         self.models = []
-        self.active_model_id = "gemini-3-flash-preview"
+        self.active_model_id = "gemini-3.1-pro-preview"
         if not self.file_path.exists():
             self.create_default()
         self.load()
@@ -270,9 +283,10 @@ class GeminiStandardPrompter:
 
 # --- Global Standard Paths (2026) ---
 
-STD_KEY_PATH = "/data/data/com.termux/files/home/.env/gemini_keys.bejson"
-STD_MODEL_PATH = "/storage/emulated/0/dev/Standardization/gemini_model_registry.104a.bejson"
-STD_PROFILE_PATH = "/storage/emulated/0/dev/Standardization/gemini_standard_profile.bejson"
+STD_KEY_PATH = "/Data/Data/com.termux/files/home/.env/gemini_keys.bejson"
+SC_ROOT = "/storage/emulated/0/Brain-Container/LLM_Container/Switch_Core"
+STD_MODEL_PATH = f"{SC_ROOT}/Schemas/gemini_model_registry.104a.bejson"
+STD_PROFILE_PATH = f"{SC_ROOT}/Schemas/gemini_standard_profile.bejson"
 
 def get_standard_prompter():
     return GeminiStandardPrompter(STD_KEY_PATH, STD_MODEL_PATH, STD_PROFILE_PATH)

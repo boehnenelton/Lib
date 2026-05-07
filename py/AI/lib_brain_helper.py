@@ -1,10 +1,12 @@
 """
 Library:     lib_brain_helper.py
 Family:      AI
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
 Status:      OFFICIAL
 Author:      Elton Boehnen
 Version:     1.3 OFFICIAL
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
 Date:        2026-05-01
 Description: High-level helper library for querying and managing the Workspace Brain MFDB.
              Wraps foundational MFDB core libraries and utilizes the Mount-Commit pattern.
@@ -15,8 +17,8 @@ import sys
 from typing import Any, Callable, Optional, List, Dict
 
 # Resolve paths
-HOME = "/data/data/com.termux/files/home"
-CORE_DIR = os.path.join(HOME, "switchcore")
+HOME = "/Data/Data/com.termux/files/home"
+CORE_DIR = "{SC_ROOT}/Core"
 if CORE_DIR not in sys.path:
     sys.path.append(CORE_DIR)
 

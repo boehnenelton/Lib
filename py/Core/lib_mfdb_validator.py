@@ -1,10 +1,12 @@
 """
 Library:     lib_mfdb_validator.py
 Family:      Core
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — Core-Command/Lib (v1.3)
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
+Status:      OFFICIAL — Core-Command/Lib (v1.3.1)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.3.1 OFFICIAL
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
 Date:        2026-05-01
 Description: Standard validator for MFDB (Multifile Database) structures.
              Layers on lib_bejson_validator.py.
@@ -93,9 +95,37 @@ _mstate = _MFDBValidationState()
 # Internal helpers (also imported by lib_mfdb_core)
 # ---------------------------------------------------------------------------
 
+
 def _load_json(path: str) -> dict:
-    """Load raw JSON without BEJSON validation (used internally)."""
-    return json.loads(Path(path).read_text(encoding="utf-8"))
+    """Load raw JSON without BEJSON validation. Supports .mfdb.zip archives."""
+    p = Path(path)
+    # Scenario A: Regular file
+    if p.is_file() and not path.lower().endswith(".zip"):
+        return json.loads(p.read_text(encoding="utf-8"))
+    
+    # Scenario B: Zip Archive (defaulting to manifest)
+    if path.lower().endswith(".zip") and p.is_file():
+        with zipfile.ZipFile(path, "r") as z:
+            # For MFDB archives, we assume the manifest is the target
+            if "104a.mfdb.bejson" in z.namelist():
+                return json.loads(z.read("104a.mfdb.bejson").decode("utf-8"))
+            raise FileNotFoundError(f"104a.mfdb.bejson not found in archive: {path}")
+
+    # Scenario C: Logical path inside zip (e.g. archive.zip/data/user.bejson)
+    # This is a bit more complex, we check if a part of the path is a zip
+    parts = p.parts
+    for i, part in enumerate(parts):
+        if part.lower().endswith(".zip"):
+            zip_path = str(Path(*parts[:i+1]))
+            inner_path = "/".join(parts[i+1:])
+            if os.path.exists(zip_path):
+                with zipfile.ZipFile(zip_path, "r") as z:
+                    if inner_path in z.namelist():
+                        return json.loads(z.read(inner_path).decode("utf-8"))
+    
+    # Fallback to standard path handling
+    return json.loads(p.read_text(encoding="utf-8"))
+
 
 
 def _rows_as_dicts(doc: dict) -> list[dict]:
@@ -104,10 +134,14 @@ def _rows_as_dicts(doc: dict) -> list[dict]:
     return [dict(zip(names, row)) for row in doc["Values"]]
 
 
+
 def _resolve_entity_path(manifest_path: str, file_path_rel: str) -> str:
     """Resolve a relative file_path (from manifest record) to an absolute path."""
+    if manifest_path.lower().endswith(".zip"):
+        return os.path.join(manifest_path, file_path_rel)
     manifest_dir = os.path.dirname(os.path.abspath(manifest_path))
     return os.path.normpath(os.path.join(manifest_dir, file_path_rel))
+
 
 
 # ---------------------------------------------------------------------------

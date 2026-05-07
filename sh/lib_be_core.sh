@@ -1,11 +1,17 @@
 #!/bin/bash
+# # Library:     lib_be_core.sh
+# MFDB Version: 1.3.1
+# Format_Creator: Elton Boehnen
+# Status:      OFFICIAL - v1.3.1
+# Date:        2026-05-06
+
 #===============================================================================
 # Library:     lib_be_core.sh
 # Jurisdiction: ["BASH", "CORE_COMMAND"]
 # Status:      OFFICIAL — Core-Command/Lib (v1.1)
 # Author:      Elton Boehnen
-# Version:     1.3 OFFICIAL
-# Date:        2026-05-01
+# Version:     1.1 (OFFICIAL)
+# Date:        2026-04-23
 # Description: Core-Command library component.
 #===============================================================================
 # lib_be_core.sh - Core environment and path management for BECore
@@ -16,12 +22,12 @@ bec_core_get_root() {
         echo "$BEC_ROOT"
         return 0
     fi
-    local root_file="/storage/7B30-0E0B/Core-Command/data/state/BEC_ROOT.txt"
+    local root_file="${SC_ROOT:-{SC_ROOT}}/Data/state/BEC_ROOT.txt"
     if [[ -f "$root_file" ]]; then
         cat "$root_file"
     else
         # Fallback if state not yet initialized
-        echo "/storage/7B30-0E0B/Core-Command"
+        echo "${SC_ROOT:-{SC_ROOT}}"
     fi
 }
 
@@ -37,7 +43,7 @@ bec_core_save_state() {
     local manager="$1" # "bash" or "python"
     local key="$2"
     local value="$3"
-    local state_file="$(bec_core_get_root)/data/state/${manager}_manager_state.txt"
+    local state_file="$(bec_core_get_root)/Data/state/${manager}_manager_state.txt"
     
     mkdir -p "$(dirname "$state_file")"
     touch "$state_file"
@@ -53,7 +59,7 @@ bec_core_save_state() {
 bec_core_load_state() {
     local manager="$1"
     local key="$2"
-    local state_file="$(bec_core_get_root)/data/state/${manager}_manager_state.txt"
+    local state_file="$(bec_core_get_root)/Data/state/${manager}_manager_state.txt"
     
     if [[ -f "$state_file" ]]; then
         grep "^${key}=" "$state_file" | cut -d'=' -f2

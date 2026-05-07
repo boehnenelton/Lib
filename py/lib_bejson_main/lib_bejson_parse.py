@@ -1,10 +1,9 @@
 """
-game1 aka the BEJSON Game Engine (#1)
 Library:     lib_bejson_parse.py
 Family:      Core
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
 Status:      OFFICIAL — Switch-Core/Lib (v1.4)
-Author: Elton Boehnen
+Author:      Elton Boehnen
 Version:     1.3 OFFICIAL
 Date:        2026-05-01
 Description: BEJSON structured parser — extracts files from BEJSON 104 / 104a / 104db schemas.

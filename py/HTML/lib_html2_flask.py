@@ -1,10 +1,12 @@
 """
 Library:     lib_html2_flask.py
 Family:      HTML
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
 Status:      OFFICIAL — Core-Command/Lib (v1.2)
 Author:      Elton Boehnen
 Version:     1.3 OFFICIAL
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
 Date:        2026-05-01
 Description: High-level Flask integration for the html2 library suite.
              Automates dashboard assembly, stats, and MFDB data rendering.

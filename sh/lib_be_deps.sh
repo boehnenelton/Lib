@@ -1,11 +1,17 @@
 #!/bin/bash
+# # Library:     lib_be_deps.sh
+# MFDB Version: 1.3.1
+# Format_Creator: Elton Boehnen
+# Status:      OFFICIAL - v1.3.1
+# Date:        2026-05-06
+
 #===============================================================================
 # Library:     lib_be_deps.sh
 # Jurisdiction: ["BASH", "CORE_COMMAND"]
 # Status:      OFFICIAL — Core-Command/Lib (v1.1)
 # Author:      Elton Boehnen
-# Version:     1.3 OFFICIAL
-# Date:        2026-05-01
+# Version:     1.1 (OFFICIAL)
+# Date:        2026-04-23
 # Description: Core-Command library component.
 #===============================================================================
 # lib_be_deps.sh - Dependency Management for Core-Command

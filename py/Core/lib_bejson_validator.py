@@ -1,7 +1,14 @@
 """
 Library:     lib_bejson_validator.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_bejson_validator.py
 Family:      Core
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
 Status:      OFFICIAL — Core-Command/Lib (v1.21)
 Author:      Elton Boehnen
 Version:     1.3 OFFICIAL

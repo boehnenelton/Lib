@@ -1,5 +1,12 @@
 """
 Library:     lib_html_firebase.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_html_firebase.py
 Family:      HTML
 Jurisdiction: ["PYTHON", "WEB_SDK"]
 Status:      EXPERIMENTAL
@@ -32,7 +39,7 @@ def get_firebase_init_script(config=None):
   // Import the functions you need from the SDKs you need
   import {{ initializeApp }} from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
   // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  // https://firebase.google.com/Docs/web/setup#available-libraries
 
   // Your web app's Firebase configuration
   const firebaseConfig = {cfg_json};

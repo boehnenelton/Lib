@@ -2,6 +2,7 @@
 Library:     test_mfdb_validator.py
 Jurisdiction: ["PYTHON", "CORE_COMMAND"]
 Status:      OFFICIAL — Core-Command/Lib (v1.1)
+MFDB Version: 1.3.1
 Author:      Elton Boehnen
 Version:     1.3 OFFICIAL
 Date:        2026-05-01

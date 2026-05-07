@@ -1,10 +1,12 @@
 """
 Library:     lib_cms_orchestrator.py
 Family:      CMS
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — Switch-Core/Lib (v1.4)
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
+Status:      OFFICIAL — BEJSON/Lib (v1.4)
 Author:      Elton Boehnen
 Version:     1.3 OFFICIAL
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
 Date:        2026-05-01
 Description: High-level Orchestrator for the BEJSON Modular CMS Backend.
              Provides a unified API for site config, taxonomy, and content.

@@ -1,10 +1,12 @@
 """
 Library:     lib_bejson_static_backend.py
 Family:      Core
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — Switch-Core/Lib (v1.4)
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
+Status:      OFFICIAL — BEJSON/Lib (v1.4)
 Author:      Elton Boehnen
 Version:     1.3 OFFICIAL
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
 Date:        2026-05-01
 Description: Authoritative Data Backend for Static Site Generation.
              Unifies access to standard BEJSON files and MFDB v2.0 structures.
@@ -19,7 +21,7 @@ class BEJSONBackend:
     Handles standard 104/104a/104db files AND MFDB (Manifest-Entity) resolution.
     """
     def __init__(self, root_path=None):
-        self.root = root_path or "/storage/7B30-0E0B/Core-Command"
+        self.root = root_path or "{SC_ROOT}"
 
     def _load_json(self, path):
         if not os.path.exists(path):

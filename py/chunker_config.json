@@ -1,25 +1,13 @@
 {
-  "project_name": "MyProject",
+  "project_name": "lib_py_project",
   "version": "1.0.0",
   "extensions": [
-    ".py",
-    ".js",
-    ".ts",
-    ".html",
-    ".css",
-    ".md",
-    ".json",
-    ".sh",
-    ".txt",
-    ".bejson"
+    ".py"
   ],
   "exclude_dirs": [
     ".git",
     "__pycache__",
-    "node_modules",
-    "lib",
-    "output",
-    ".mfdb_lock"
+    "output"
   ],
-  "output_base": "/storage/emulated/0/dev/Tools/Cli_Chunker-Python-v1/output"
+  "output_base": "/storage/emulated/0/Administrative_Layer/chunked_libs/"
 }

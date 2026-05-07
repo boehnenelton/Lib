@@ -1,6 +1,7 @@
 """
 game1 aka the BEJSON Game Engine (#1)
 Author: Elton Boehnen
+MFDB Version: 1.3.1
 """
 class BEJSONEvents:
     """

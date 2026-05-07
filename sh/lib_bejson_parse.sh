@@ -1,11 +1,17 @@
 #!/bin/bash
+# # Library:     lib_bejson_parse.sh
+# MFDB Version: 1.3.1
+# Format_Creator: Elton Boehnen
+# Status:      OFFICIAL - v1.3.1
+# Date:        2026-05-06
+
 #===============================================================================
 # Library:     lib_bejson_parse.sh
 # Jurisdiction: ["BASH", "CORE_COMMAND"]
 # Status:      OFFICIAL — Core-Command/Lib (v1.1)
 # Author:      Elton Boehnen
-# Version:     1.3 OFFICIAL
-# Date:        2026-05-01
+# Version:     1.1 (OFFICIAL)
+# Date:        2026-04-23
 # Description: BEJSON structured parser — extracts files from BEJSON 104 / 104a /
 104db schemas. Sources lib_bejson_core.sh and lib_bejson_validator.sh.
 Author:      Elton Boehnen

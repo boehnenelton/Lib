@@ -1,6 +1,8 @@
 """
 Library:     lib_cms_mfdb.py
 Family:      CMS
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
 Description: MFDB-based CMS manager for the BEJSON CMS system.
              v1.2: Implements Archive Transport (Mount-Commit) and Dirty State tracking.
 """

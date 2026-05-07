@@ -1,8 +1,15 @@
 """
 Library:     lib_bejson_server.py
+MFDB Version: 1.3.1
+Format_Creator: Elton Boehnen
+Status:      OFFICIAL - v1.3.1
+Date:        2026-05-06
+"""
+"""
+Library:     lib_bejson_server.py
 Family:      Core
-Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — Switch-Core/Lib (v1.4)
+Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
+Status:      OFFICIAL — BEJSON/Lib (v1.4)
 Author:      Elton Boehnen
 Version:     1.3 OFFICIAL
 Date:        2026-05-01
@@ -32,7 +39,7 @@ def get_random_available_port(start=5001, end=5020):
     return None
 
 def register_server(name, port):
-    reg_path = '/data/data/com.termux/files/home/Registry/Environment_Registry.bejson.json'
+    reg_path = '/Data/Data/com.termux/files/home/Registry/Environment_Registry.bejson.json'
     if not os.path.exists(reg_path): return
     try:
         with open(reg_path, 'r') as f:
@@ -49,7 +56,7 @@ def register_server(name, port):
         print(f" [ServerLib] Registration Error: {e}")
 
 def unregister_server(name):
-    reg_path = '/data/data/com.termux/files/home/Registry/Environment_Registry.bejson.json'
+    reg_path = '/Data/Data/com.termux/files/home/Registry/Environment_Registry.bejson.json'
     if not os.path.exists(reg_path): return
     try:
         with open(reg_path, 'r') as f:
