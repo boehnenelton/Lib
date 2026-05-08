@@ -1,76 +1,46 @@
-# BEJSON Ecosystem Libraries
-**Version: 1.4 OFFICIAL** | **MFDB Spec: v1.3.1** | **Date: May 2026**
+# Lib (Ecosystem Standard Libraries)
 
-A unified, multi-language suite of libraries designed for the **BEJSON (Boehnen Elton JSON)** data format and **MFDB (Multifile Database)** architecture. This repository serves as the foundational "Management Layer" for all development and operational nodes in the 2026 federated environment.
+**Version 1.3.1 · Multi-Language · Foundational BEJSON & MFDB Modules**
 
----
+The **Lib** repository is the authoritative, multi-language core of Elton Boehnen's software ecosystem. It contains the primary implementations of the **BEJSON** and **MFDB** specifications across Python, JavaScript, TypeScript, Rust, and Bash. These libraries provide the positional parsing, strict validation, and mount-commit logic that power every tool and service within the Switch Core network.
 
-## 🚀 Core Philosophy: Structural Integrity
-BEJSON is a tabular data format that enforces **positional integrity**. By decoupling field definitions from record values, it achieves high-performance parsing and strict schema validation while remaining human-readable for AI agents.
+## Author Information
+- **Name:** Elton Boehnen
+- **Email:** [boehnenelton2024@gmail.com](mailto:boehnenelton2024@gmail.com)
+- **GitHub:** [https://github.com/boehnenelton/](https://github.com/boehnenelton/)
+- **Website:** [https://boehnenelton2024.pages.dev](https://boehnenelton2024.pages.dev)
 
-### Key Standards
-- **BEJSON 104/104a/104db:** Supports single-entity, metadata-heavy, and relational multi-entity formats.
-- **MFDB v1.3.1:** A "Mount-Commit" federated database pattern that enables "Structural Blindness" in AI context windows.
-- **2026 Gemini Standards:** Native support for the Gemini 3.1 Pro/Flash lineup and the Interactions API.
+## Language Implementation Arsenal
 
----
+### 1. Python (`py/`)
+The flagship implementation, featuring deep domain integration:
+- **Core**: Parsing and validation for BEJSON 104, 104a, and 104db.
+- **AI**: Standardized wrappers for Gemini, Groq, and OpenRouter with v1.21 self-healing.
+- **CMS**: Full backend orchestration for the MFDB CMS.
+- **HTML**: High-fidelity UI generation engine for HTML2 templates.
+- **System**: Advanced media processing (AV) and project management services.
 
-## 📦 Module Breakdown
+### 2. JavaScript & TypeScript (`js/`, `ts/`)
+High-performance modules for web-based tools and game engines:
+- **BEJSON Main**: Core logic for browser-based data management.
+- **BEJSON Gaming**: Specialized renderer, physics, and input engines for 16-bit retro simulations.
+- **MFDB Core**: Client-side manifest resolution and ZIP-based archive handling.
 
-### 🤖 AI (Artificial Intelligence)
-Found in `py/AI/`.
-- **`lib_bejson_genai.py`**: Integration for the latest `google-genai` SDK. Supports round-robin key rotation across pools of 2026-standardized models.
-- **`lib_bejson_gemini.py`**: Unified prompter engine with embedded schemas for Key Registries, Model Registries, and AI Profiles.
-- **Key Support:** Supports Gemini 3.1, Gemma 4, Groq, and OpenRouter with unified status feedback.
+### 3. Rust (`rs/`)
+Low-level, high-performance implementations for mission-critical data processing:
+- **BEJSON-RS**: Optimized parsing and type-safe record management.
 
-### 🏛️ Core & CMS
-Found in `py/Core/` and `py/CMS/`.
-- **`lib_bejson_core.py`**: The definitive implementation of BEJSON. Handles document creation, mutation, and **atomic file I/O** (os.rename + fsync).
-- **`lib_mfdb_core.py`**: Orchestrates manifest-entity relationships across the file system.
-- **`lib_cms_orchestrator.py`**: High-level API for modular content management, taxonomies, and site configuration.
+### 4. Bash (`sh/`)
+System-level integration scripts for rapid environment synchronization and dependency management.
 
-### 🎨 HTML2 (Visual Components)
-Found in `py/HTML/`.
-- **Terminal Aesthetics:** Features like `html_code_box` provide interactive, high-contrast code snippets with copy-to-clipboard functionality.
-- **Modular Components:** Layout skeletons, animations, metrics, and diagrammers designed for high-signal technical reports.
-- **Diagramming:** Native support for BEJSON-to-SVG and BEJSON-to-HTML diagram generation.
+## Technical Specifications
+- **Spec Compliance**: MFDB v1.3.1 (Authoritative)
+- **BEJSON Formats**: 104, 104a, 104db
+- **Design Philosophy**: Positional Tabular Integrity, Zero-Bloat Context, Self-Healing.
+- **Quality Assurance**: Comprehensive test suites provided in `tests/` for all supported languages.
 
-### 🛠️ System & Tools
-Found in `py/System/`.
-- **`lib_be_project_service.py`**: Manages repository state and system-wide synchronization.
-- **`lib_book_builder.py`**: Automated pipeline for document and ebook generation.
-- **`lib_av_manager.py`**: Standardized presets for audio/video processing in Termux.
+## Standards Compliance
+This repository is the root dependency for the entire ecosystem. All libraries strictly adhere to Elton Boehnen's **2026 Engineering Mandates** and are **Level 3 (PROD)** certified.
 
----
-
-## 🌐 Multi-Language Support
-The ecosystem is built to be language-agnostic. Implementations are kept in sync across:
-- **Python (`py/`)**: The primary reference implementation.
-- **TypeScript/JS (`ts/`, `js/`)**: Support for browser-based diagrammers and Node.js services.
-- **Shell (`sh/`)**: Critical for Termux initialization and low-level system hooks.
-- **Rust (`rs/`)**: High-performance implementations for core parsing and validation.
-
----
-
-## 🛠 Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/boehnenelton/Lib.git
-
-# Link to your local project
-ln -s /path/to/Lib/py/Core lib_core
-```
-
----
-
-## 📜 Engineering Standards (POL001-POL004)
-1. **Atomic Safety:** Every write operation must use `bejson_core_atomic_write`.
-2. **Human Readability:** All records and logs must be written in human-readable BEJSON.
-3. **UTC Mandate:** All timestamps must use ISO 8601 UTC.
-4. **Standardization:** All field names use `snake_case`; all entities use `PascalCase`.
-
----
-
-**© 2026 Elton Boehnen** | [boehnenelton2024.pages.dev](https://boehnenelton2024.pages.dev)
-*"Structure defines Intelligence."*
+## License
+Created and maintained by Elton Boehnen. All rights reserved.
