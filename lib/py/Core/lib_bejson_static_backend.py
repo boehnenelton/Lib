@@ -2,9 +2,9 @@
 Library:     lib_bejson_static_backend.py
 Family:      Core
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v1.4)
+Status:      OFFICIAL — BEJSON/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 MFDB Version: 1.3.1
 Format_Creator: Elton Boehnen
 Date:        2026-05-01

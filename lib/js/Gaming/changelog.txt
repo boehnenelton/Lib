@@ -1,0 +1,16 @@
+# BEJSON Gaming Library (JS) - Changelog
+
+## [v1.5 OFFICIAL] - 2026-05-10
+### Added
+- Standardized 'moveBody(id, dx, dy, colliders)' method to the physics engine.
+- Mandatory wall-collision validation for all forceful position updates (e.g., knockback).
+
+### Fixed
+- Knockback Collision Bug: Actors can no longer be shoved into walls during knockback impulses.
+- Static Anchor Deadzone: Upgraded joystick to 'Floating Joystick' (Dynamic Anchor). Origin now follows the thumb when exceeding max radius, allowing for instant direction reversal.
+
+### Standards
+- MFDB Version: 1.3.1 (Stable)
+- Status: OFFICIAL
+- Organization: Family-based folder structure (Gaming/)
+

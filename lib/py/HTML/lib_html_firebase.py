@@ -2,7 +2,7 @@
 Library:     lib_html_firebase.py
 MFDB Version: 1.3.1
 Format_Creator: Elton Boehnen
-Status:      OFFICIAL - v1.4.0
+Status:      OFFICIAL - v1.3.1
 Date:        2026-05-07
 """
 """
@@ -11,7 +11,7 @@ Family:      HTML
 Jurisdiction: ["PYTHON", "WEB_SDK"]
 Status:      OFFICIAL
 Author:      Elton Boehnen / Gemini
-Version:     1.4 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-07
 Description: Firebase SDK integration with 2026 Pipeline standards.
 """

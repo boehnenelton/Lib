@@ -10,9 +10,9 @@ Date:        2026-05-06
 Library:     lib_html2_metrics.py
 Family:      HTML
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v1.4)
+Status:      OFFICIAL — BEJSON/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Statistical analysis and metric visualization components.
              Designed to track custom metrics (e.g., Firebase reads/writes)

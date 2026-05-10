@@ -1,17 +1,10 @@
 """
 Library:     lib_bejson_parse.py
-MFDB Version: 1.3.1
-Format_Creator: Elton Boehnen
-Status:      OFFICIAL - v1.3.1
-Date:        2026-05-06
-"""
-"""
-Library:     lib_bejson_parse.py
 Family:      Core
-Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v1.4)
+Jurisdiction: ["PYTHON", "SWITCH_CORE"]
+Status:      OFFICIAL — Switch-Core/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: BEJSON structured parser — extracts files from BEJSON 104 / 104a / 104db schemas.
              Sources lib_bejson_core.py and lib_bejson_validator.py.

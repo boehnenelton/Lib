@@ -9,9 +9,9 @@ Date:        2026-05-06
 Library:     lib_bejson_genai.py
 Family:      AI
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v1.4)
+Status:      OFFICIAL — BEJSON/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Gemini GenAI (SDK) integration library following the GENAI-POLICY.
              Handles round-robin key rotation, model selection (v2.5+),

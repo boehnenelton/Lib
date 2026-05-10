@@ -9,11 +9,11 @@ Date:        2026-05-06
 Library:     lib_html2_body.py
 Family:      HTML
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v1.7)
+Status:      OFFICIAL — BEJSON/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.7 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-06
-Description: Content components for Modern Flat UI (v6.0).
+Description: Content components for Modern Flat UI (v6.1.
              Updated: Square buttons, high-contrast tables.
 """
 import html as html_mod

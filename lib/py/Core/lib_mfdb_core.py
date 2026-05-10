@@ -2,9 +2,9 @@
 Library:     lib_mfdb_core.py
 Family:      Core
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — Core-Command/Lib (v1.3)
+Status:      OFFICIAL — Core-Command/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 MFDB Version: 1.3.1
 Date:        2026-05-01
 Description: MFDB (Multifile Database) core operations.

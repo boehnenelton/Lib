@@ -1,10 +1,10 @@
 """
 Library:     test_mfdb_validator.py
 Jurisdiction: ["PYTHON", "CORE_COMMAND"]
-Status:      OFFICIAL — Core-Command/Lib (v1.1)
+Status:      OFFICIAL — Core-Command/Lib (v1.5)
 MFDB Version: 1.3.1
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Core-Command library component.
 """

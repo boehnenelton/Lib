@@ -10,9 +10,9 @@ Date:        2026-05-06
 Library:     lib_bejson_html2_skeletons.py
 Family:      HTML
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v2.0)
+Status:      OFFICIAL — BEJSON/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     2.0 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-06
 Description: Authoritative HTML/CSS skeleton templates for Core-Command.
              Updated: v2.0 Global Footer with Authoritative Contact Info.

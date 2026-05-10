@@ -2,9 +2,9 @@
 Library:     lib_html2_flask.py
 Family:      HTML
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — Core-Command/Lib (v1.2)
+Status:      OFFICIAL — Core-Command/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 MFDB Version: 1.3.1
 Format_Creator: Elton Boehnen
 Date:        2026-05-01

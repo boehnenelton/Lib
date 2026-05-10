@@ -9,9 +9,9 @@ Date:        2026-05-06
 /**
  * Library:     index.ts
  * Jurisdiction: ["TYPESCRIPT", "CORE_COMMAND"]
- * Status:      OFFICIAL — Core-Command/Lib (v1.1)
+ * Status:      OFFICIAL — Core-Command/Lib (v1.5)
  * Author:      Elton Boehnen
- * Version:     1.1 (OFFICIAL)
+ * Version:     1.5 OFFICIAL
  * Date:        2026-04-23
  * Description: Core-Command library component.
  */

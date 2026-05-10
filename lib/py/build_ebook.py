@@ -1,9 +1,9 @@
 """
 Library:     build_ebook.py
 Jurisdiction: ["PYTHON", "SWITCH_CORE"]
-Status:      OFFICIAL — Switch-Core/Lib (v1.4)
+Status:      OFFICIAL — Switch-Core/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Core-Command library component.
 """

@@ -8,7 +8,7 @@ Date:        2026-05-06
 """
 Library:     lib_bejson_diagram_html.py
 Family:      HTML
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Description: Advanced HTML/SVG rendering engine for BEJSON 104db diagrams.
              Features: GLOW filters, animated flows, and custom CSS theme support.
 """
@@ -69,7 +69,7 @@ CYBERPUNK_TEMPLATE = """<!DOCTYPE html>
 
   <footer class="meta-bar">
     <span>Format: BEJSON</span>
-    <span>Version: 104db</span>
+    Version:     1.5 OFFICIAL
     <span>Exported: {{TIMESTAMP}}</span>
   </footer>
 </div>

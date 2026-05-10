@@ -11,7 +11,7 @@ Family:      HTML
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
 Status:      OFFICIAL
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: UI widgets and plugins for BEJSON HTML generation.
              Refactored to follow Modular CSS Policy (centralized in skeletons).

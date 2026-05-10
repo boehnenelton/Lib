@@ -9,9 +9,9 @@ Date:        2026-05-06
 Library:     lib_html2_animations.py
 Family:      HTML
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v1.4)
+Status:      OFFICIAL — BEJSON/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Authoritative CSS/JS Animation Components for Core-Command.
              Integrates Terminal Typing, Glitch Reveals, and Bracket Slams.

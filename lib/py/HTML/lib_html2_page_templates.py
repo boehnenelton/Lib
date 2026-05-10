@@ -9,9 +9,9 @@ Date:        2026-05-06
 Library:     lib_html2_page_templates.py
 Family:      HTML
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v1.4)
+Status:      OFFICIAL — BEJSON/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-06
 Description: Full HTML Dashboard templates for BEJSON data.
              Updated: Added html_page_brutal for Data-Dense Brutalism.

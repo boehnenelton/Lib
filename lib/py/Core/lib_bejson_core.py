@@ -1,10 +1,10 @@
 """
 Library:     lib_bejson_core.py
 Family:      Core
-Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
+Jurisdiction: ["PYTHON", "SWITCH_CORE"]
 Status:      OFFICIAL
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 MFDB Version: 1.3.1
 Date:        2026-05-01
 Description: BEJSON (Boehnen Elton JSON) core library — document creation, mutation, validation,
@@ -91,7 +91,7 @@ def __bejson_core_restore_backup(file_path: str, backup_path: str) -> bool:
 def bejson_core_atomic_write(file_path: str, content: dict, create_backup: bool = True) -> None:
     """
     Validate content and write it atomically to file_path.
-    CRITICAL FIXES (v3.1):
+    CRITICAL FIXES (v3.2:
       - Same-partition temp files: temp file is created as a sibling to the
         target file (same directory), guaranteeing atomic os.rename() on the
         same filesystem.  Cross-device falls back to shutil.copy2.

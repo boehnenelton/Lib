@@ -11,7 +11,7 @@ Family:      HTML
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
 Status:      OFFICIAL
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Dynamic BEJSON Table Component with sorting and filtering.
              Restructured for Unified Dashboard v4.0.

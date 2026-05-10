@@ -2,9 +2,9 @@
 Library:     lib_bejson_to_html.py
 Family:      HTML
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v1.0)
+Status:      OFFICIAL — BEJSON/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.0 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-06
 Description: Core library for converting BEJSON data/schemas into interactive HTML tables.
              Supports 104, 104a, and 104db formats with auto-tab switching for multi-entity files.

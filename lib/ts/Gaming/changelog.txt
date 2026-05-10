@@ -1,0 +1,17 @@
+# BEJSON Gaming Library (TS) - Changelog
+
+## [v1.5 OFFICIAL] - 2026-05-10
+### Added
+- Standardized 'moveBody(id, dx, dy, colliders)' and 'applyImpulse' methods for physics parity with JS.
+- Independent Axis Resolution in 'step()' function.
+- Static collision checks integrated into the physics integration step.
+
+### Fixed
+- Knockback Collision Bug: Resolved issue where forceful updates bypassed AABB checks, causing actors to get stuck in walls.
+- Floating Joystick: Implemented Dynamic Anchor logic. Joystick origin now tracks with movement beyond max radius to eliminate input deadzones.
+
+### Standards
+- MFDB Version: 1.3.1 (Stable)
+- Status: OFFICIAL
+- Organization: Family-based folder structure (Gaming/)
+

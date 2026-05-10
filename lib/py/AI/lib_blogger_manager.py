@@ -11,7 +11,7 @@ Family:      AI
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
 Status:      OFFICIAL
 Author:      Elton Boehnen
-Version:     1.3.1 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Management library for Google Blogger API v3. 
              Handles OAuth 2.0 flows and CRUD operations for posts/pages.

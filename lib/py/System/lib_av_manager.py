@@ -11,7 +11,7 @@ Family:      System
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
 Status:      OFFICIAL
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Enhanced AV management with Base64 encoding, slideshow generation,
              and optimized space-saving splitting logic.

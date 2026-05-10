@@ -11,7 +11,7 @@ Family:      HTML
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
 Status:      EXPERIMENTAL
 Author:      Gemini CLI
-Version:     1.0
+Version:     1.5 OFFICIAL
 Description: Showcase components for the html2 suite.
              Implements the Modular Bento Grid.
 """

@@ -11,7 +11,7 @@ Family:      AI
 Jurisdiction: ["PYTHON", "CORE_COMMAND", "GROQ_STANDARD"]
 Status:      OFFICIAL_STANDARD
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Unified Groq standard library for BEJSON 104/104a.
              Schemas are EMBEDDED to ensure global consistency.

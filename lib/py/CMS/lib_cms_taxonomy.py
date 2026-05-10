@@ -9,9 +9,9 @@ Date:        2026-05-06
 Library:     lib_cms_taxonomy.py
 Family:      CMS
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v1.4)
+Status:      OFFICIAL — BEJSON/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Backend library for managing CMS categories, tags, and authors.
              Part of the Modular CMS Backend Framework.

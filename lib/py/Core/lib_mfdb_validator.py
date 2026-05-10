@@ -2,9 +2,9 @@
 Library:     lib_mfdb_validator.py
 Family:      Core
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — Core-Command/Lib (v1.3.1)
+Status:      OFFICIAL — Core-Command/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3.1 OFFICIAL
+Version:     1.5 OFFICIAL
 MFDB Version: 1.3.1
 Format_Creator: Elton Boehnen
 Date:        2026-05-01
@@ -197,7 +197,7 @@ def mfdb_validator_validate_manifest(manifest_path: str, reset_state: bool = Tru
 
     doc = _load_json(manifest_path)
 
-    # Federation Finding (v1.3)
+    # Federation Finding (v1.4
     if "Network_Role" in doc:
         _mstate.add_finding("Network_Role", doc["Network_Role"])
 
@@ -447,7 +447,7 @@ def mfdb_validator_validate_database(
         if e.get("primary_key")
     }
 
-    # Federation Finding: Registry presence (v1.3)
+    # Federation Finding: Registry presence (v1.4
     if "ConnectedSlave" in pk_map or any(e["entity_name"] == "ConnectedSlave" for e in entries):
         _mstate.add_finding("Has_Federation_Registry", True)
 

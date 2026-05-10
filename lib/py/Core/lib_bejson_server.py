@@ -9,9 +9,9 @@ Date:        2026-05-06
 Library:     lib_bejson_server.py
 Family:      Core
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
-Status:      OFFICIAL — BEJSON/Lib (v1.4)
+Status:      OFFICIAL — BEJSON/Lib (v1.5)
 Author:      Elton Boehnen
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Flask server management with port randomization, registration, and auto-launch.
 """

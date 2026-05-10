@@ -8,7 +8,7 @@ Date:        2026-05-06
 """
 Library:     lib_bejson_validator_diagram.py
 Family:      HTML
-Version:     1.3 OFFICIAL
+Version:     1.5 OFFICIAL
 Description: BEJSON Diagram validator and HTML exporter.
              v1.5.3 fixes IndexError in viewBox calculation by using exact field mapping.
 """
@@ -69,7 +69,7 @@ HI_FI_TEMPLATE = """<!DOCTYPE html>
       <g id="connectors-layer"></g><g id="nodes-layer"></g>
     </svg>
   </div>
-  <footer class="meta-bar"><span>Format: BEJSON</span><span>Version: 104db</span><span>Creator: {{CREATOR}}</span><span>Timestamp: {{TIMESTAMP}}</span></footer>
+  Version:     1.5 OFFICIAL
 </div>
 <script id="bejson-data" type="application/json">{{DIAGRAM_DATA}}</script>
 <script>

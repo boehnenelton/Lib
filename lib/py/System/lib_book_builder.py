@@ -11,7 +11,7 @@ Family:      System
 Jurisdiction: ["PYTHON", "BEJSON_LIBRARIES"]
 Status:      OFFICIAL
 Author:      Elton Boehnen
-Version:     1.4 OFFICIAL
+Version:     1.5 OFFICIAL
 Date:        2026-05-01
 Description: Automated book/manual generator. Converts BEJSON 104db content 
              into cohesive Markdown with TOC and high-fidelity HTML.
