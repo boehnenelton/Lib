@@ -1,0 +1,15 @@
+====================================================
+  STRUCTURED PARSER — BUILD REPORT
+====================================================
+Project    : TestProj
+Generated  : 2026-04-16 12:47:28
+Mode       : Timestamped (new folder)
+Output Dir : /storage/7B30-0E0B/Core-Command/Lib/sh/output/20260416_124727_TestProj
+Files      : 0
+
+FILE LIST
+
+
+Zip        : TestProj_update.zip
+====================================================
+
