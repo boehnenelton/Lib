@@ -13,16 +13,6 @@ Date:        2026-05-06
  * Author:      Elton Boehnen
  * Version:     1.5 OFFICIAL
  * Date:        2026-04-23
- * Description: (obj["description"] as string | null) ?? null,
-      record_count: (obj["record_count"] as number | null) ?? null,
-      schema_version: (obj["schema_version"] as string | null) ?? null,
-      primary_key: (obj["primary_key"] as string | null) ?? null,
-    } as MFDBManifestRecord;
-  });
-}
-
-/**
-Extract database-level metadata from manifest custom headers.
  */
 import {
   BEJSONDocument,
@@ -239,10 +229,6 @@ export function validateEntityFile(
 
   // Bidirectional check: entity's declared path must equal what the manifest recorded
   if (options.entityRelativePath !== undefined && options.manifestRelativePath !== undefined) {
-    // The manifest says this entity lives at entityRelativePath.
-    // The entity's Parent_Hierarchy + its own path should resolve back to manifestRelativePath.
-    // We do a lightweight string-based check here — full path resolution is the caller's job.
-    // We emit a warning rather than an error because resolution is environment-dependent.
     if (typeof entity.Parent_Hierarchy === "string") {
       _emitWarning(r, E.BIDIRECTIONAL_PATH_FAILED,
         "Bidirectional path check: verify that \"" + options.entityRelativePath +

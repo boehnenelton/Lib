@@ -152,7 +152,7 @@ function _checkTopLevel(doc: BEJSONDocument, r: ValidationResult): void {
 
   const validVersions = ["104", "104a", "104db"];
   if (!validVersions.includes(doc.Format_Version as string)) {
-    Version:     1.5 OFFICIAL
+    _err(r, E.INVALID_FORMAT_VERSION, "Invalid Format_Version.", "Format_Version");
   }
 
   if (doc.Format_Creator !== "Elton Boehnen") {

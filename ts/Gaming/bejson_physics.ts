@@ -20,31 +20,6 @@ export class BEJSONPhysics {
     ]);
   }
 
-  applyImpulse(id: string, ix: number, iy: number) {
-    const b = this.bodies.Values.find(v => v[0] === id);
-    if (!b) return;
-    (b[5] as number) += ix;
-    (b[6] as number) += iy;
-  }
-
-  moveBody(id: string, dx: number, dy: number, staticColliders: any[] = []) {
-    const b = this.bodies.Values.find(v => v[0] === id);
-    if (!b) return;
-
-    const oldX = b[1] as number;
-    (b[1] as number) += dx;
-    if (this._checkStaticCollisions(b, staticColliders)) {
-        (b[1] as number) = oldX;
-    }
-
-    const oldY = b[2] as number;
-    (b[2] as number) += dy;
-    if (this._checkStaticCollisions(b, staticColliders)) {
-        (b[2] as number) = oldY;
-    }
-  }
-
-
   addBody(id: string, x: number, y: number, w: number, h: number, options: any = {}) {
     this.bodies.Values.push([
       id, x, y, w, h, 

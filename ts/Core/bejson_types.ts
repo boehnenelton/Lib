@@ -56,7 +56,7 @@ export interface BEJSONField {
 
 export interface BEJSONDocument {
   Format: "BEJSON";
-  Version:     1.5 OFFICIAL
+  Format_Version: "104" | "104a" | "104db";
   Format_Creator: "Elton Boehnen";
   Records_Type: string[];
   Fields: BEJSONField[];

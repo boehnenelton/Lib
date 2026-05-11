@@ -1,28 +1,11 @@
-/*
-Library:     lib_bejson_physics.js
-MFDB Version: 1.3.1
-Format_Creator: Elton Boehnen
-Status:      OFFICIAL - v1.3.1
-Date:        2026-05-10
-*/
-
-/**
- * switch_physics.js
- * game1 aka the BEJSON Game Engine (#1)
- * Author: Elton Boehnen: AABB Physics & Collision Engine (v1.6
- * Date: 2026-05-09
- * 
- * Optimized for BEJSON 104 performance.
- * Refactored for: Independent Axis Resolution, Impulse Support, and Wall-Sliding fix.
- */
-
-window.Switch = window.Switch || {};
-
-class SwitchPhysics {
+// bejson_physics.ts
+import { createEmpty104 } from "./index";
+export class BEJSONPhysics {
+    gravity;
+    bodies;
     constructor(options = {}) {
-        this.gravity = options.gravity || { x: 0, y: 0 }; // Default to top-down (no gravity)
-        this.friction = options.friction || 0.9;
-        this.bodies = Switch.BEJSON.create104("PhysicsWorld", [
+        this.gravity = options.gravity || { x: 0, y: 9.8 };
+        this.bodies = createEmpty104("PhysicsWorld", [
             { name: "id", type: "string" },
             { name: "x", type: "number" },
             { name: "y", type: "number" },
@@ -32,75 +15,58 @@ class SwitchPhysics {
             { name: "vy", type: "number" },
             { name: "isStatic", type: "boolean" },
             { name: "mass", type: "number" }
-        ], []);
-        
-        // Impulse queue to be applied during step
-        this.impulses = new Map();
+        ]);
     }
-
     addBody(id, x, y, w, h, options = {}) {
         this.bodies.Values.push([
-            id, x, y, w, h, 
-            options.vx || 0, options.vy || 0, 
-            options.isStatic || false, 
+            id, x, y, w, h,
+            options.vx || 0, options.vy || 0,
+            options.isStatic || false,
             options.mass || 1
         ]);
     }
-
+    applyImpulse(id, ix, iy) {
+        const b = this.bodies.Values.find(v => v[0] === id);
+        if (!b)
+            return;
+        b[5] += ix;
+        b[6] += iy;
+    }
     moveBody(id, dx, dy, staticColliders = []) {
         const b = this.bodies.Values.find(v => v[0] === id);
-        if (!b) return;
-
+        if (!b)
+            return;
         const oldX = b[1];
         b[1] += dx;
         if (this._checkStaticCollisions(b, staticColliders)) {
             b[1] = oldX;
         }
-
         const oldY = b[2];
         b[2] += dy;
         if (this._checkStaticCollisions(b, staticColliders)) {
             b[2] = oldY;
         }
     }
-
-    applyImpulse(id, ix, iy) {
-        if (!this.impulses.has(id)) this.impulses.set(id, { x: 0, y: 0 });
-        const imp = this.impulses.get(id);
-        imp.x += ix;
-        imp.y += iy;
-    }
-
     step(dt, staticColliders = []) {
         const values = this.bodies.Values;
-
+        // 1. Integrate & Resolve Static
         for (let i = 0; i < values.length; i++) {
             const b = values[i];
-            if (b[7]) continue; // isStatic
-
-            // 1. Apply Impulses
-            if (this.impulses.has(b[0])) {
-                const imp = this.impulses.get(b[0]);
-                b[5] += imp.x;
-                b[6] += imp.y;
-                this.impulses.delete(b[0]);
-            }
-
-            // 2. Apply Gravity & Friction
-            b[5] += this.gravity.x * dt;
-            b[6] += this.gravity.y * dt;
-            b[5] *= this.friction;
-            b[6] *= this.friction;
-
-            // 3. Resolve X Axis
+            if (b[7])
+                continue; // isStatic
+            b[5] += this.gravity.x * dt; // vx
+            b[6] += this.gravity.y * dt; // vy
+            // Friction (Standardized 0.9)
+            b[5] *= 0.9;
+            b[6] *= 0.9;
+            // X Axis
             const oldX = b[1];
             b[1] += b[5] * dt;
             if (this._checkStaticCollisions(b, staticColliders)) {
                 b[1] = oldX;
                 b[5] = 0;
             }
-
-            // 4. Resolve Y Axis
+            // Y Axis
             const oldY = b[2];
             b[2] += b[6] * dt;
             if (this._checkStaticCollisions(b, staticColliders)) {
@@ -108,8 +74,7 @@ class SwitchPhysics {
                 b[6] = 0;
             }
         }
-
-        // 5. Resolve Dynamic Collisions (Simple Swap)
+        // 2. Resolve Dynamic (Simple Swap)
         for (let i = 0; i < values.length; i++) {
             const bA = values[i];
             for (let j = i + 1; j < values.length; j++) {
@@ -120,31 +85,35 @@ class SwitchPhysics {
             }
         }
     }
-
     _checkStaticCollisions(b, colliders) {
         for (const c of colliders) {
             const cx = Array.isArray(c) ? c[0] : c.x;
             const cy = Array.isArray(c) ? c[1] : c.y;
             const cw = Array.isArray(c) ? c[2] : (c.w || c.width);
             const ch = Array.isArray(c) ? c[3] : (c.h || c.height);
-
-            if (b[1] < cx + cw && b[1] + b[3] > cx && b[2] < cy + ch && b[2] + b[4] > cy) {
+            if (b[1] < cx + cw && b[1] + b[3] > cx &&
+                b[2] < cy + ch && b[2] + b[4] > cy) {
                 return true;
             }
         }
         return false;
     }
-
     _checkAABB(a, b) {
-        return (a[1] < b[1] + b[3] && a[1] + a[3] > b[1] && a[2] < b[2] + b[4] && a[2] + a[4] > b[2]);
+        return (a[1] < b[1] + b[3] &&
+            a[1] + a[3] > b[1] &&
+            a[2] < b[2] + b[4] &&
+            a[2] + a[4] > b[2]);
     }
-
     _resolveCollision(a, b) {
-        if (a[7] && b[7]) return;
-        const tempVx = a[5]; a[5] = b[5]; b[5] = tempVx;
-        const tempVy = a[6]; a[6] = b[6]; b[6] = tempVy;
+        if (a[7] && b[7])
+            return; // both static
+        // Simple push-apart logic would go here, 
+        // for now we just swap velocities for dynamic-dynamic
+        const tempVx = a[5];
+        a[5] = b[5];
+        b[5] = tempVx;
+        const tempVy = a[6];
+        a[6] = b[6];
+        b[6] = tempVy;
     }
 }
-
-Switch.Physics = SwitchPhysics;
-export default SwitchPhysics;

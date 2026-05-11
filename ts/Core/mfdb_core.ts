@@ -6,16 +6,6 @@ Status:      OFFICIAL - v1.3.1
 Date:        2026-05-06
 */
 
-/**
- * Library:     mfdb_core.ts
- * Jurisdiction: ["TYPESCRIPT", "CORE_COMMAND"]
- * Status:      OFFICIAL — Core-Command/Lib (v1.5)
- * Author:      Elton Boehnen
- * Version:     1.5 OFFICIAL
- * Date:        2026-04-26
- * Description: MFDB Core definitions for TypeScript.
- *              v1.2 adds MFDBArchive support for .mfdb.zip handling.
- */
 import {
   BEJSONDocument,
   BEJSONField,
@@ -32,31 +22,12 @@ import {
   getFieldIndex,
   setFieldValue,
   createEmpty104a,
-  createEmpty104,
 } from "./bejson_core";
 
-// ---------------------------------------------------------------------------
-// MFDBArchive Interface (v1.3
-// ---------------------------------------------------------------------------
-
-/**
- * Handles .mfdb.zip packaging and virtual mounting using File System Access API.
- */
 export interface MFDBArchiveInterface {
-  /**
-   * Mounts a .mfdb.zip file into a FileSystemDirectoryHandle.
-   */
   mount(zipFile: File | Blob, dirHandle: any): Promise<string>;
-
-  /**
-   * Repacks a FileSystemDirectoryHandle back into a .mfdb.zip Blob.
-   */
   commit(dirHandle: any): Promise<Blob>;
 }
-
-// ---------------------------------------------------------------------------
-// Manifest factory
-// ---------------------------------------------------------------------------
 
 export interface CreateManifestOptions extends MFDBDatabaseMeta {
   includeOptionalFields?: boolean;
@@ -83,7 +54,7 @@ export function createManifest(opts: CreateManifestOptions): BEJSONDocument {
   }
 
   const customHeaders: Record<string, string> = {
-    MFDB_Version: opts.mfdb_version ?? "1.21",
+    MFDB_Version: opts.mfdb_version ?? "1.3.1",
     DB_Name: opts.db_name,
   };
   if (opts.db_description) customHeaders["DB_Description"] = opts.db_description;
@@ -93,10 +64,6 @@ export function createManifest(opts: CreateManifestOptions): BEJSONDocument {
 
   return createEmpty104a("mfdb", fields, customHeaders);
 }
-
-// ---------------------------------------------------------------------------
-// Entity registration
-// ---------------------------------------------------------------------------
 
 export function registerEntity(
   manifest: BEJSONDocument,
@@ -156,10 +123,6 @@ export function syncRecordCount(
 
   return setFieldValue(manifest, idx, "record_count", count);
 }
-
-// ---------------------------------------------------------------------------
-// Internal helpers
-// ---------------------------------------------------------------------------
 
 function _assertManifest(doc: BEJSONDocument): void {
   if (!doc) {

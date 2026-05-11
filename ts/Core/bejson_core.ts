@@ -6,15 +6,6 @@ Status:      OFFICIAL - v1.3.1
 Date:        2026-05-06
 */
 
-/**
- * Library:     bejson_core.ts
- * Jurisdiction: ["TYPESCRIPT", "CORE_COMMAND"]
- * Status:      OFFICIAL — Core-Command/Lib (v1.5)
- * Author:      Elton Boehnen
- * Version:     1.5 OFFICIAL
- * Date:        2026-04-23
- * Description: Core-Command library component.
- */
 import {
   BEJSONDocument,
   BEJSONField,
@@ -22,11 +13,6 @@ import {
   BEJSONCoreError,
   BEJSON_CORE_CODES,
 } from "./bejson_types";
-
-// ---------------------------------------------------------------------------
-// Parse & Serialize
-// ---------------------------------------------------------------------------
-
 
 export function parse(json: string): BEJSONDocument {
   let raw: unknown;
@@ -65,11 +51,6 @@ export function serialize(doc: BEJSONDocument, indent: number = 2): string {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Field index helpers
-// ---------------------------------------------------------------------------
-
-
 export function getFieldIndex(doc: BEJSONDocument, name: string): number {
   _assertDoc(doc);
   const idx = doc.Fields.findIndex((f) => f.name === name);
@@ -93,11 +74,6 @@ export function getFields(doc: BEJSONDocument): BEJSONField[] {
   _assertDoc(doc);
   return doc.Fields.map((f) => Object.assign({}, f));
 }
-
-// ---------------------------------------------------------------------------
-// Record accessors
-// ---------------------------------------------------------------------------
-
 
 export function getRecord(
   doc: BEJSONDocument,
@@ -128,16 +104,10 @@ export function getFieldValue(
   return doc.Values[index][fi];
 }
 
-
 export function getRecordCount(doc: BEJSONDocument): number {
   _assertDoc(doc);
   return doc.Values.length;
 }
-
-// ---------------------------------------------------------------------------
-// 104db — entity-scoped record access
-// ---------------------------------------------------------------------------
-
 
 export function getRecordsByType(
   doc: BEJSONDocument,
@@ -155,7 +125,6 @@ export function getRecordsByType(
     _rowToObject(doc.Fields, row)
   );
 }
-
 
 export function getFieldApplicability(
   doc: BEJSONDocument,
@@ -201,7 +170,6 @@ export function queryRecords(
   );
 }
 
-
 export function sortByField(
   doc: BEJSONDocument,
   fieldName: string,
@@ -245,11 +213,6 @@ export function getEntityFields(
   );
 }
 
-// ---------------------------------------------------------------------------
-// Record mutations (return new document — documents are treated as immutable)
-// ---------------------------------------------------------------------------
-
-
 export function appendRecord(
   doc: BEJSONDocument,
   values: BEJSONValue[]
@@ -275,7 +238,6 @@ export function updateRecord(
   );
   return _cloneWith(doc, { Values: newValues });
 }
-
 
 export function setFieldValue(
   doc: BEJSONDocument,
@@ -307,11 +269,6 @@ export function deleteRecord(
   return _cloneWith(doc, { Values: newValues });
 }
 
-// ---------------------------------------------------------------------------
-// Schema mutations
-// ---------------------------------------------------------------------------
-
-
 export function appendField(
   doc: BEJSONDocument,
   field: BEJSONField,
@@ -329,11 +286,6 @@ export function appendField(
   return _cloneWith(doc, { Fields: newFields, Values: newValues });
 }
 
-// ---------------------------------------------------------------------------
-// Document factory helpers
-// ---------------------------------------------------------------------------
-
-
 export function createEmpty104(
   recordType: string,
   fields: BEJSONField[],
@@ -341,7 +293,7 @@ export function createEmpty104(
 ): BEJSONDocument {
   const doc: BEJSONDocument = {
     Format: "BEJSON",
-    Version:     1.5 OFFICIAL
+    Format_Version: "104",
     Format_Creator: "Elton Boehnen",
     Records_Type: [recordType],
     Fields: fields.map((f) => ({ ...f })),
@@ -361,7 +313,7 @@ export function createEmpty104a(
 ): BEJSONDocument {
   const doc: BEJSONDocument = {
     Format: "BEJSON",
-    Version:     1.5 OFFICIAL
+    Format_Version: "104a",
     Format_Creator: "Elton Boehnen",
     ...customHeaders,
     Records_Type: [recordType],
@@ -382,18 +334,13 @@ export function createEmpty104db(
   };
   return {
     Format: "BEJSON",
-    Version:     1.5 OFFICIAL
+    Format_Version: "104db",
     Format_Creator: "Elton Boehnen",
     Records_Type: [...recordTypes],
     Fields: [discriminator, ...entityFields.map((f) => ({ ...f }))],
     Values: [],
   };
 }
-
-// ---------------------------------------------------------------------------
-// Utility — flatten a record for 104db (strip discriminator, nulled fields)
-// ---------------------------------------------------------------------------
-
 
 export function flattenEntityRecord(
   doc: BEJSONDocument,
@@ -415,10 +362,6 @@ export function flattenEntityRecord(
   }
   return result;
 }
-
-// ---------------------------------------------------------------------------
-// Internal helpers
-// ---------------------------------------------------------------------------
 
 function _assertDoc(doc: BEJSONDocument): void {
   if (doc === null || doc === undefined) {
